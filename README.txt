@@ -9,8 +9,11 @@ Finalmente, para alineamientos con mutliples secuencias se usa popularmente MUSC
 
 PRÁCTICA 2 03-02-2026
 
-Primero hemos creado una carpeta .git en el directorio principal de bioinf que se encargará de tomar nota de los estados de la carpeta de trabajo durante todas las prácticas, git add … añade los archivos y los prepara para ser guardados, después con git commit -m "..." se confirma todo lo que has añadido en git add y además hay que añadirle entre las comillas un mensaje que describa lo que estas modificando y guardando.
- 
+Primero se ha creado una carpeta .git en el directorio principal de bioinf que se encargará de tomar nota de los estados de la carpeta de trabajo durante todas las prácticas, git add … añade los archivos y los prepara para ser guardados, después con git commit -m "..." se confirma todo lo que se ha añadido en git add y además hay que añadir entre las comillas un mensaje que describa lo que estas modificando y guardando.
+
+Se puede también crear un archivo .gitignore donde se deben poner en cada linea de texto los archivos que se quiere que GIT ignore, además se puede acceder a él en el terminal mediante nano .gitignore, modificarlo y salir con "ctrl x".
+
+Luego se creó un repositorio en GITHUB, se crearon las dos claves SSH, y finalmente se relacionaron los repositorios local (portátil) y remoto (GitHub) para poder actualizarlos en cada práctica. 
 
 
 
