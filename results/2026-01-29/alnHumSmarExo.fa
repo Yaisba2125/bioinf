@@ -1,0 +1,145 @@
+Command line: [exonerate --model est2genome HumanSMARCD2.fa HumanChr17.fa]
+Hostname: [Federico]
+
+C4 Alignment:
+------------
+         Query: ENA|AAI36323|AAI36323.1 Homo sapiens (human) SMARCD2 protein
+        Target: chromosome:GRCh38:17:63832000:63843000:1 [revcomp]
+         Model: est2genome
+     Raw score: 7224
+   Query range: 0 -> 1485
+  Target range: 10675 -> 938
+
+     1 : ATGTCGGGCCGAGGCGCGGGCGGGTTCCCGCTGCCCCCGCTAAGCCCTGGCGGCGGCGCC :    60
+         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ 10675 : ATGTCGGGCCGAGGCGCGGGCGGGTTCCCGCTGCCCCCGCTAAGCCCTGGCGGCGGCGCC : 10616
+
+    61 : G  >>>> Target Intron 1 >>>>  CCTTCCGCCCCATGGGCCCCGCGGGCCCCG :    91
+         |--          111 bp         -+||||||||||||||||||||||||||||||
+ 10615 : Gtg.........................cgCCTTCCGCCCCATGGGCCCCGCGGGCCCCG : 10474
+
+    92 : CGGCGCAGTACCAG  >>>> Target Intron 2 >>>>  CGACCTGGCATGTCACC :   122
+         ||||||||||||||++         4833 bp         ++|||||||||||||||||
+ 10473 : CGGCGCAGTACCAGgt.........................agCGACCTGGCATGTCACC :  5610
+
+   123 : AGGGAACCGGATGCCCATGGCTGGCTTGCAGGTGGGACCCCCTGCTGGCTCCCCATTTGG :   182
+         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  5609 : AGGGAACCGGATGCCCATGGCTGGCTTGCAGGTGGGACCCCCTGCTGGCTCCCCATTTGG :  5550
+
+   183 : TGCAGCAGCTCCGCTTCGACCTGGCATGCCACCCACCATGATGGATCCATTCCGAAAACG :   242
+         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  5549 : TGCAGCAGCTCCGCTTCGACCTGGCATGCCACCCACCATGATGGATCCATTCCGAAAACG :  5490
+
+   243 : CCTGCTTGTGCCCCAGGCGCAGCCTCCCATGCCTGCCCAGCGCCGGGG  >>>> Targe :   291
+         ||||||||||||||||||||||||||||||||||||||||||||||||++          
+  5489 : CCTGCTTGTGCCCCAGGCGCAGCCTCCCATGCCTGCCCAGCGCCGGGGgt.......... :  5439
+
+   292 : t Intron 3 >>>>  GTTAAAGAGGAGGAAGATGGCAGATAAGGTTCTACCTCAGCGA :   333
+         203 bp         ++|||||||||||||||||||||||||||||||||||||||||||
+  5438 : ...............agGTTAAAGAGGAGGAAGATGGCAGATAAGGTTCTACCTCAGCGA :  5196
+
+   334 :   >>>> Target Intron 4 >>>>  ATCCGGGAGCTTGTTCCAGAGTCTCAGGCGT :   364
+         ++          150 bp         ++|||||||||||||||||||||||||||||||
+  5195 : gt.........................agATCCGGGAGCTTGTTCCAGAGTCTCAGGCGT :  5015
+
+   365 : ACATGGATCTCTTGGCTTTTGAGCGGAAGCTGGACCAGACCATTGCTCGCAAGCGGATGG :   424
+         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  5014 : ACATGGATCTCTTGGCTTTTGAGCGGAAGCTGGACCAGACCATTGCTCGCAAGCGGATGG :  4955
+
+   425 : AGATCCAGGAGGCCATCAAAAAGCCTCTGACA  >>>> Target Intron 5 >>>>  :   457
+         ||||||||||||||||||||||||||||||||++         1354 bp         +
+  4954 : AGATCCAGGAGGCCATCAAAAAGCCTCTGACAgt.........................a :  3570
+
+   458 :  CAAAAGCGAAAGCTTCGGATCTACATTTCCAATACGTTCAGTCCCAGCAAGGCGGAAGG :   515
+         +|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  3569 : gCAAAAGCGAAAGCTTCGGATCTACATTTCCAATACGTTCAGTCCCAGCAAGGCGGAAGG :  3510
+
+   516 : CGATAGTGCAGGAACTGCAGGGACCCCTGGGGGAACCCCAGCAGGGGACAAGGTGGCTTC :   575
+         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  3509 : CGATAGTGCAGGAACTGCAGGGACCCCTGGGGGAACCCCAGCAGGGGACAAGGTGGCTTC :  3450
+
+   576 : CTGGGAACTCCGAGTGGAAGGAAAACTGCTGGATGAT  >>>> Target Intron 6  :   613
+         |||||||||||||||||||||||||||||||||||||++          611 bp     
+  3449 : CTGGGAACTCCGAGTGGAAGGAAAACTGCTGGATGATgt..................... :  3410
+
+   614 : >>>>  CCTAGCAAACAGAAGAGGAAGTTTTCTTCATTCTTTAAGAGCCTCGTCATTGAG :   666
+             ++||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  3409 : ....agCCTAGCAAACAGAAGAGGAAGTTTTCTTCATTCTTTAAGAGCCTCGTCATTGAG :  2748
+
+   667 : CTGGACAAGGAGCTGTACGGGCCTGACAATCACCTGGTGGAG  >>>> Target Intr :   709
+         ||||||||||||||||||||||||||||||||||||||||||++          129 bp
+  2747 : CTGGACAAGGAGCTGTACGGGCCTGACAATCACCTGGTGGAGgt................ :  2703
+
+   710 : on 7 >>>>  TGGCACCGGATGCCCACCACCCAGGAGACAGATGGCTTCCAAGTAAAAC :   757
+                  ++|||||||||||||||||||||||||||||||||||||||||||||||||
+  2702 : .........agTGGCACCGGATGCCCACCACCCAGGAGACAGATGGCTTCCAAGTAAAAC :  2528
+
+   758 : GGCCTGGAGACCTCAACGTCAAGTGCACCCTCCTGCTCATGCTGGATCATCAG  >>>>  :   811
+         |||||||||||||||||||||||||||||||||||||||||||||||||||||++     
+  2527 : GGCCTGGAGACCTCAACGTCAAGTGCACCCTCCTGCTCATGCTGGATCATCAGgt..... :  2472
+
+   812 : Target Intron 8 >>>>  CCTCCCCAGTACAAATTGGACCCCCGATTGGCAAGGCT :   848
+              145 bp         ++||||||||||||||||||||||||||||||||||||||
+  2471 : ....................agCCTCCCCAGTACAAATTGGACCCCCGATTGGCAAGGCT :  2292
+
+   849 : GCTGGGAGTGCACACGCAGACGAGGGCCGCCATCATGCAGGCCCTGTGGCTTTACATCAA :   908
+         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  2291 : GCTGGGAGTGCACACGCAGACGAGGGCCGCCATCATGCAGGCCCTGTGGCTTTACATCAA :  2232
+
+   909 : GCACAACCAGCTGCAGGATGGGCACGAGCGGGAGTACATCAACTGCAACCGTTACTTCCG :   968
+         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  2231 : GCACAACCAGCTGCAGGATGGGCACGAGCGGGAGTACATCAACTGCAACCGTTACTTCCG :  2172
+
+   969 : CCAG  >>>> Target Intron 9 >>>>  ATCTTCAGTTGTGGCCGACTCCGTTTC :   999
+         ||||++          160 bp         ++|||||||||||||||||||||||||||
+  2171 : CCAGgt.........................agATCTTCAGTTGTGGCCGACTCCGTTTC :  1981
+
+  1000 : TCCGAGATTCCCATGAAGCTGGCAGGGTTGCTGCAGCATCCAGACCCCATTGTCATCAAC :  1059
+         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  1980 : TCCGAGATTCCCATGAAGCTGGCAGGGTTGCTGCAGCATCCAGACCCCATTGTCATCAAC :  1921
+
+  1060 : CATGTCATTAG  >>>> Target Intron 10 >>>>  TGTCGACCCTAACGACCAG :  1089
+         |||||||||||++          186 bp          ++|||||||||||||||||||
+  1920 : CATGTCATTAGgt..........................agTGTCGACCCTAACGACCAG :  1705
+
+  1090 : AAGAAGACAGCCTGTTACGACATCGATGTGGAGGTGGACGACCCACTGAAGGCCCAAATG :  1149
+         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  1704 : AAGAAGACAGCCTGTTACGACATCGATGTGGAGGTGGACGACCCACTGAAGGCCCAAATG :  1645
+
+  1150 : AGCAATTTTCTGGCCTCTACCACCAATCAGCAGGAGATCGCCTCCCTTGATGTCAAG  > :  1207
+         |||||||||||||||||||||||||||||||||||||||||||||||||||||||||++ 
+  1644 : AGCAATTTTCTGGCCTCTACCACCAATCAGCAGGAGATCGCCTCCCTTGATGTCAAGgt. :  1585
+
+  1208 : >>> Target Intron 11 >>>>  ATCCATGAGACCATTGAGTCCATCAACCAGCTG :  1239
+                  166 bp          ++|||||||||||||||||||||||||||||||||
+  1584 : .........................agATCCATGAGACCATTGAGTCCATCAACCAGCTG :  1389
+
+  1240 : AAGACCCAGAGAGATTTCATGCTCAGTTTTAGCACCGACCCCCAGGACTTCATCCAGGAA :  1299
+         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  1388 : AAGACCCAGAGAGATTTCATGCTCAGTTTTAGCACCGACCCCCAGGACTTCATCCAGGAA :  1329
+
+  1300 : TGGCTCCGTTCCCAGCGCCGAGACCTCAAG  >>>> Target Intron 12 >>>>   :  1330
+         ||||||||||||||||||||||||||||||++          127 bp          ++
+  1328 : TGGCTCCGTTCCCAGCGCCGAGACCTCAAGgt..........................ag :  1173
+
+  1331 : ATCATCACTGATGTGATTGGAAATCCTGAGGAGGAGAGACGAGCTGCTTTCTACCACCAG :  1389
+         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+  1172 : ATCATCACTGATGTGATTGGAAATCCTGAGGAGGAGAGACGAGCTGCTTTCTACCACCAG :  1112
+
+  1390 : CCCTGGGCCCAGGAAGCAGTAGGCAGGCACATCTTTGCCAAG  >>>> Target Intr :  1432
+         ||||||||||||||||||||||||||||||||||||||||||++           77 bp
+  1111 : CCCTGGGCCCAGGAAGCAGTAGGCAGGCACATCTTTGCCAAGgt................ :  1067
+
+  1433 : on 13 >>>>  GTGCAGCAGCGAAGGCAGGAACTGGAACAGGTGCTGGGAATTCGCCTG :  1479
+                   ++||||||||||||||||||||||||||||||||||||||||||||||||
+  1066 : ..........agGTGCAGCAGCGAAGGCAGGAACTGGAACAGGTGCTGGGAATTCGCCTG :   945
+
+  1480 : ACCTAA :  1485
+         ||||||
+   944 : ACCTAA :   939
+
+vulgar: ENA|AAI36323|AAI36323.1 0 1485 + chromosome:GRCh38:17:63832000:63843000:1 10675 938 - 7224 M 61 61 5 0 2 
+I 0 107 3 0 2 M 44 44 5 0 2 I 0 4829 3 0 2 M 185 185 5 0 2 I 0 199 3 0 2 M 43 43 5 0 2 I 0 146 3 0 2 M 123 123 5 
+0 2 I 0 1350 3 0 2 M 156 156 5 0 2 I 0 607 3 0 2 M 96 96 5 0 2 I 0 125 3 0 2 M 102 102 5 0 2 I 0 141 3 0 2 M 162 
+162 5 0 2 I 0 156 3 0 2 M 98 98 5 0 2 I 0 182 3 0 2 M 136 136 5 0 2 I 0 162 3 0 2 M 123 123 5 0 2 I 0 123 3 0 2 
+M 102 102 5 0 2 I 0 73 3 0 2 M 54 54 -- completed exonerate analysis
