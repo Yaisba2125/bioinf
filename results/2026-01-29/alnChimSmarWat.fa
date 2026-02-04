@@ -1,0 +1,131 @@
+########################################
+# Program: water
+# Rundate: Wed  4 Feb 2026 11:41:03
+# Commandline: water
+#    -asequence ChimpChr17.fa
+#    -bsequence ChimpSMARCD2.fa
+#    -gapopen 10.0
+#    -gapextend 0.5
+#    -auto
+#    -outfile alnChimSmarWat.fa
+# Align_format: srspair
+# Report_file: alnChimSmarWat.fa
+########################################
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: 1
+# 2: PNJ01291.1
+# Matrix: EDNAFULL
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 1183
+# Identity:     485/1183 (41.0%)
+# Similarity:   485/1183 (41.0%)
+# Gaps:         583/1183 (49.3%)
+# Score: 799.5
+# 
+#
+#=======================================
+
+1                379 GAGAACTGGAG-TGTCC---CCT-------CCCTGGCCCAAGCCGCTGGA    417
+                     ||.||  |||| |||.|   |||       .|||||          ||||
+PNJ01291.1         1 GACAA--GGAGCTGTACGGGCCTGACAATCACCTGG----------TGGA     38
+
+1                418 GAGGCA------GCCCTCTGGCATCCCAGGAGA-TGATGGCGGCCAGAGC    460
+                     |.||||      ||||.|   || ||||||||| .||||||..||     
+PNJ01291.1        39 GTGGCACCGGATGCCCAC---CA-CCCAGGAGACAGATGGCTTCC-----     79
+
+1                461 CGCTTGCATAGATTGAGGAAAG-AAAACAAGGAGGCACCTAACAGGCTCC    509
+                                        ||| |||||                ||   |
+PNJ01291.1        80 -------------------AAGTAAAAC----------------GG---C     91
+
+1                510 CTGAAAACCCCCAACTTACCCCTGTACAAAAAAAGTG---GCTCC--CAC    554
+                     |||.|.| ||.||||.|              .|||||   .||||  |.|
+PNJ01291.1        92 CTGGAGA-CCTCAACGT--------------CAAGTGCACCCTCCTGCTC    126
+
+1                555 ATAGAAAACTTG---------CTCCCAAAATAGTGCAAAT---ACCCAAA    592
+                     ||     .||.|         |||||    .|||.|||||   ||||   
+PNJ01291.1       127 AT-----GCTGGATCATCAGCCTCCC----CAGTACAAATTAGACCC---    164
+
+1                593 GGAAAGGAAAAAACCAGCAGCAAGGCTGGGCTTGTAGGAATGGCAAAGAA    642
+                                  ||                      ||.||||      
+PNJ01291.1       165 -------------CC----------------------GATTGGC------    173
+
+1                643 CTTTGGTTTAGAAAGGCTAGGAAGAGTCTGGG-CTGCACCTCCTCTTCCT    691
+                                 ||||||        .||||| .|||||           
+PNJ01291.1       174 ------------AAGGCT--------GCTGGGAGTGCAC-----------    192
+
+1                692 AGCCCAGCTCCCCAGAGCCAGCTCTGACCCTCGCCCCAGGGGGAGTCTGT    741
+                              .|.||||                   |.||||     |.|.
+PNJ01291.1       193 ---------ACGCAGA-------------------CGAGGG-----CCGC    209
+
+1                742 AAACATGCAAACCCAGCAGCCTTTGGTTCGGAAATGTCTGTTACAATGTC    791
+                     .|.||||||..|||.|                  ||.|| |||||   ||
+PNJ01291.1       210 CATCATGCAGGCCCTG------------------TGGCT-TTACA---TC    237
+
+1                792 AAAGCACAGCCTCCAGCAGTCCTACTTGGGCCTGCCTGCAGG-GGGGCA-    839
+                      |||||||      |.|||                ||||||| .||||| 
+PNJ01291.1       238 -AAGCACA------ACCAG----------------CTGCAGGATGGGCAC    264
+
+1                840 GAGGAGG----CATCTGCTG-AACCCAATTAAAGCCAATGCAAAAAGTAT    884
+                     |||..||    ||||..||| ||||  .|||...||   ||.|.|..| |
+PNJ01291.1       265 GAGCGGGAGTACATCAACTGCAACC--GTTACTTCC---GCCAGATCT-T    308
+
+1                885 AAGGCTTTGGGGACCAAGCAACAAGGAATCC---TATCACTACATTTATA    931
+                     .||   |||.||.|           ||.|||   |.|| |.|.|||...|
+PNJ01291.1       309 CAG---TTGTGGCC-----------GACTCCGTTTCTC-CGAGATTCCCA    343
+
+1                932 AAACTAAAGCTGGAGAGTAGAGGGTGACAGCAGACACTCCTCACCCCAGC    981
+                         |.|||||||      .|||||..|.|||| || |||..||||||  
+PNJ01291.1       344 ----TGAAGCTGG------CAGGGTTGCTGCAG-CA-TCCAGACCCCA--    379
+
+1                982 CTACGTGTCTGCGGCCCCAGCAAGGACCCA------GAGGGTGGTCTCCC   1025
+                         .|||         ||.|||    |||      .||.||.|  .|||
+PNJ01291.1       380 ----TTGT---------CATCAA----CCATGTCATTAGTGTCG--ACCC    410
+
+1               1026 T-----CCAGGCTCCAGGGCTGGGAAGAAAGATCCCTGAGCAGTTAGGTC   1070
+                     |     |||              ||||||                  |.|
+PNJ01291.1       411 TAACGACCA--------------GAAGAA------------------GAC    428
+
+1               1071 AGGCGAATTCCCAGCACCTGTTCCAGTTCCTGCCTTCGCTGCTGCACCTG   1120
+                     ||              ||||||.|       |.|.|||.|| ||.|..||
+PNJ01291.1       429 AG--------------CCTGTTAC-------GACATCGATG-TGGAGGTG    456
+
+1               1121 GA---------GAAGGGAGAAACCAAGTG-GC-----TCAGGCCTTTGCT   1155
+                     ||         |||||     .||||.|| ||     ||.|||||   ||
+PNJ01291.1       457 GACGACCCACTGAAGG-----CCCAAATGAGCAATTTTCTGGCCT---CT    498
+
+1               1156 ACTCACGGCCAAATGAGGGAAAACAGGGCAGAGCCCCACCTTGGCAAAGA   1205
+                     || ||    |.|||.||      ||||                    |||
+PNJ01291.1       499 AC-CA----CCAATCAG------CAGG--------------------AGA    517
+
+1               1206 TGTGCCTGCCTACTGCTTCCTGGGCCCAGGGCTGGTGGTAGAAAGCAGCT   1255
+                     | .||||.|||                     ||.||.||      ||.|
+PNJ01291.1       518 T-CGCCTCCCT---------------------TGATGTTA------AGAT    539
+
+1               1256 CGTCTCTCCTCCTCAGGATTTCCAATCACATCAGTGATGATCTGCAAAGA   1305
+                     |.||.||         |||              |||||    ||.||  |
+PNJ01291.1       540 CATCACT---------GAT--------------GTGAT----TGGAA--A    560
+
+1               1306 GCC--AGGAGGAAAGCC----------ATAGCATAATCCCCACCCCTGGG   1343
+                     .||  |||||||.||.|          .||.||      |||.|||||||
+PNJ01291.1       561 TCCTGAGGAGGAGAGACGAGCTGCTTTCTACCA------CCAGCCCTGGG    604
+
+1               1344 CTAATCCACCCTGGGAACTGCTGTGGGTAAAAATCACCCAGAGCTTTACA   1393
+                     |    |||     ||||  ||.||.||       ||..||.|.||||.|.
+PNJ01291.1       605 C----CCA-----GGAA--GCAGTAGG-------CAGGCACATCTTTGCC    636
+
+1               1394 TAGGAGTCCCCTCGGGAAAG--AGG-ACT---ACACCTTGAGGTCTCGGC   1437
+                     .|||.|   |..|.|..|||  ||| |||   |||            ||.
+PNJ01291.1       637 AAGGTG---CAGCAGCGAAGGCAGGAACTGGAACA------------GGT    671
+
+1               1438 GCTGGGAACGGAGCCATTCCTGGATGAAGTCCT   1470
+                     |||||||        ||||  |..|||   |||
+PNJ01291.1       672 GCTGGGA--------ATTC--GCCTGA---CCT    691
+
+
+#---------------------------------------
+#---------------------------------------

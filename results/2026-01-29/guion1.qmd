@@ -113,6 +113,8 @@ debería guardarse en un archivo en formato de texto.
 #| eval: false
 # Sólo queremos ejecutar el código si los resultados no
 # están ya disponibles, es decir, si el archivo de salida no existe.
+# son importantes los espacios, ! significa no, y el -e porque es una archivo, 
+# si fuera una carpeta seria -d
 if [ ! -e aln1.txt ]; then
    # Sólo descargaremos las secuencias, si no están ya descargadas.
    if [ ! -e HumanSMARCD2.fa ]; then
@@ -126,6 +128,8 @@ if [ ! -e aln1.txt ]; then
    fi
    # Utilizamos el carácter "\" para que Bash ignore el salto de línea
    # y poder distribuir los argumentos y opciones en más de una línea.
+   # las barras invertidas permiten ignorar lo que hay después, 
+   # NO HAY QUE PONER ESPACIOS DESPUES DE ELLAS
    needle -asequence HumanChr17.fa \
           -bsequence HumanaSMARCD2.fa \
           -gapopen 15.0 \
