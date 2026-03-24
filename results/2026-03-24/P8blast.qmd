@@ -1,0 +1,149 @@
+---
+title: "P8blast"
+lang: es
+date: today
+execute: 
+  eval: true
+  error: true
+engine: knitr
+bibliography: ../../doc/references.bib
+language:
+   title-block-published: "Última actualización:"
+   section-title-references: "Bibliografía"
+format:
+   html:
+      embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Ejercicio 1 Identificación de Ortólogos
+
+Primero descargar los datos y cargar las librerías necesarias:
+
+```{r}
+library('BiocManager')
+library('Biostrings')
+# Lo he descargado desde el enlace WEB, pero se puede mediante API:
+Buchnera -> "https://rest.uniprot.org/uniprotkb/stream?format=fasta&query=%28proteome%3AUP000001806%29"
+Blochmannia -> "https://rest.uniprot.org/uniprotkb/stream?format=fasta&query=%28%28taxonomy_id%3A251538%29%29"
+```
+
+```{bash}
+if [ ! -e ../../data/buchnera.paa ]; then
+   # Creamos un archivo para enmascarar zonas de baja complejidad:
+   if [ ! -e buchnera_seg.asnb ]; then
+      segmasker -in ../../data/buchnera.fa \
+                -infmt fasta \
+                -parse_seqids \
+                -outfmt maskinfo_asn1_bin \
+                -out ../../data/buchnera_seg.asnb
+   fi
+   # Y indexamos el archivo FASTA para BLAST:
+   makeblastdb  -in ../../data/buchnera.fa \
+                -input_type fasta \
+                -dbtype prot \
+                -parse_seqids \
+                -mask_data ../../data/buchnera_seg.asnb \
+                -out ../../data/buchnera \
+                -title "Proteoma de Buchnera"
+fi
+
+# Hay que repetir todo esto para Blochmannia:
+if [ ! -e ../../data/blochmannia.paa ]; then
+   # Creamos un archivo para enmascarar zonas de baja complejidad:
+   if [ ! -e blochmannia_seg.asnb ]; then
+      segmasker -in ../../data/blochmannia.fa \
+                -infmt fasta \
+                -parse_seqids \
+                -outfmt maskinfo_asn1_bin \
+                -out ../../data/blochmannia_seg.asnb
+   fi
+   # Y indexamos el archivo FASTA para BLAST:
+   makeblastdb  -in ../../data/blochmannia.fa \
+                -input_type fasta \
+                -dbtype prot \
+                -parse_seqids \
+                -mask_data ../../data/blochmannia_seg.asnb \
+                -out ../../data/blochmannia \
+                -title "Proteoma de Blochmannia"
+fi
+```
+
+Ahora que ya tenemos los proteomas enmascarados e indexados hacemos los
+blast entre las dos especies bacterianas
+
+```{bash}
+# De Buchnera hacia Blochmannia
+blastp -query ../../data/buchnera.fa \
+       -db ../../data/blochmannia \
+       -out buch_bloch.txt \
+       -outfmt '6 qseqid sseqid qlen slen length evalue bitscore' \
+       -evalue 0.001 \
+       -max_target_seqs 1
+       
+# De Blochmannia hacia Buchnera
+blastp -query ../../data/blochmannia.fa \
+       -db ../../data/buchnera \
+       -out bloch_buch.txt \
+       -outfmt '6 qseqid sseqid qlen slen length evalue bitscore' \
+       -evalue 0.001 \
+       -max_target_seqs 1
+
+```
+
+Ahora se comparan los resultados leyendolos en tablas:
+
+```{r}
+buch_bloch <- read.table(
+   'buch_bloch.txt',
+   col.names = c('query', 'subject', 'qlen', 'slen',
+                 'length', 'evalue', 'bitscore')
+)
+
+bloch_buch <- read.table(
+   'bloch_buch.txt',
+   col.names = c('query', 'subject', 'qlen', 'slen',
+                 'length', 'evalue', 'bitscore')
+)
+
+#Para ver cuales son las parejas de proteinas: 
+buch_bloch$reverse <- bloch_buch[
+   match(buch_bloch$subject, bloch_buch$query),
+   'subject'
+]
+coincidencias <- buch_bloch[
+   buch_bloch$query == buch_bloch$reverse,
+   c('query', 'subject')
+]
+# Esto ultimo puede hacerse directamente con la funcion "merge", lo que haces es ver que cuando buscas la proteina mas parecida de A a B sale la misma que al buscar la proteína de B a A, y si es así entonces esa pareja de proteínas son ortólogas. Por ello es normal que el objeto "coincidencias" tenga menos cantidad de lineas
+```
+Se podrian graficar los valores de qlength y slength asi como el evalue o el bitscore para ver un resumen general de los resultados obtenidos. Cuanto menor sea el evalue mejor es la coincidencia
+
+## Ejercicio 2 PSI-BLAST
+
+La descarga de datos mediante el comando siguiente en la terminal de
+bash:
+
+```{bash}
+update_blastdb --decompress swissprot
+
+```
+
+Ahora se hace un PSI-BLAST, lo hago primero con Q5UPT2
+```{bash}
+# Como Swissprot debería estar ya descargada en `../../data`, podemos sacar
+# de ahí la secuencia de la proteína escogida:
+blastdbcmd -db ../../data/swissprot -entry Q5UPT2 -out Q5UPT2.fa
+
+# Y ahora la usamos como query en psi-blast:
+psiblast -db ../../data/swissprot \
+         -query Q5UPT2.fa \
+         -out Q5UPT2.blastout.txt \
+         -evalue 0.1 \
+         -outfmt 7 \
+         -inclusion_ethresh 0.001 \
+         -num_iterations 7 \
+         -matrix BLOSUM62
+```
