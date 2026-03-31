@@ -1,0 +1,189 @@
+---
+title: "guionP9"
+lang: es
+date: today
+execute: 
+  eval: true
+  error: true
+engine: knitr
+bibliography: ../../doc/references.bib
+language:
+   title-block-published: "Última actualización:"
+   section-title-references: "Bibliografía"
+format:
+   html:
+      embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Instalación de paquetes y preparación
+
+```{r}
+install.packages('phangorn')
+library(phangorn)
+mtdna <- read.phyDat('../../data/mtDNA.fasta', format = 'fasta')
+glance(mtdna)
+image(mtdna)
+```
+
+## Ejercicio 1
+
+¿Puedes confirmar el número de secuencias? ¿Qué longitud tiene el
+alineamiento? ¿Qué función usarías para extraer los nombres de las
+secuencias?
+
+```{r}
+length(mtdna) #Para ver el numero de secuencias diferentes que hay
+print(mtdna) #Devuelve que tiene 42 secuencias con 16603 caracteres, este último es la longitud del alineamiento
+names(mtdna) #Devuelve los nombres de todas las secuencias 
+
+```
+
+# Árboles basados en distancias
+
+```{r}
+distancias <- dist.ml(mtdna)
+mt_nj <- NJ(distancias)
+mt_upgma <- upgma(distancias)
+
+```
+
+## Ejercicio 2
+
+¿De qué clase son los objetos mt_nj y mt_upgma? Consulta la estructura
+de estos objetos (str(mt_nj)). Represéntalos gráficamente (plot(mt_nj))
+y consulta la ayuda de la función plot.phylo() para saber qué opciones
+de representación gráfica tienes. Para qué sirven las funciones
+add.scale.bar() y axisPhylo()?
+
+```{r}
+#| fig-width: 15
+#| fig-height: 10
+
+class(mt_nj) # Son de clase phylo
+str(mt_nj) 
+
+plot(mt_nj)
+nodelabels()
+add.scale.bar(x = 0, y = 0) # Dibuja una barra que sirve de escala visual
+
+class(mt_upgma)
+str(mt_upgma)
+
+plot(mt_upgma)
+axisPhylo() # Añade un eje X numerico, supongo que se podrá usar para referenciar el tiempo
+```
+
+# Enraizar
+
+Escogiendo el nodo concreto mediante ID:
+
+```{r}
+#| fig-width: 15
+#| fig-height: 9
+is.rooted(mt_nj)
+mt_nj_rooted <- root(mt_nj, node = 75)
+plot(mt_nj_rooted)
+```
+
+Escogiendo el outgroup mediante su nombre:
+
+```{r}
+#| fig-width: 15
+#| fig-height: 9
+is.rooted(mt_nj)
+# Debería dar el mismo resultado:
+mt_nj_rooted2 <- root(mt_nj, outgroup = 'G.gorilla_D38114')
+plot(mt_nj_rooted2)
+```
+
+Para escoger un punto medio que haga que el arbol pareza mas
+ultramérico:
+
+```{r}
+#| fig-width: 15
+#| fig-height: 10
+mt_nj_rooted3 <- midpoint(mt_nj)
+plot(mt_nj_rooted3, align.tip.label = TRUE, main = 'NJ, enraizado en punto medio')
+nodelabels(frame = 'none')
+add.scale.bar()
+```
+
+Con datación de hojas:
+```{r}
+#| fig-width: 15
+#| fig-height: 10
+fechas <- c(0, 0, 0, 0, 0, 0, 0, 0, 0,
+            -400000,
+            -39000, -50000, -110000, -110000,
+            -39820, -40096, -38515, -38310, -39000, -40000, -41210,
+            -42430, -42540, -43230, -43780, -44290, -44770, -49000,
+            -50000, -82752, -65000, -122287, -110450,
+            0, 0, 0, 0, 0, 0, 0, 0, 0)
+# Observa que hay que asignar el resultado de setNames() a "fechas"
+fechas <- setNames(fechas, mt_nj$tip.label)
+fechas
+mt_nj_rtt <- rtt(mt_nj, tip.dates = fechas, objective = 'rms')
+plot(mt_nj_rtt)
+add.scale.bar()
+
+```
+## Ejercicio 3
+¿Se corresponden bien las distancias evolutivas estimadas con las dataciones? **No exactamente**
+¿Qué secuencias crees que se ajustan menos a su supuesta edad? **El homo heidelbergensis.**
+¿Qué razones puede haber para que la edad de una secuencia no se corresponda con la cantidad de cambios que ha acumulado? **Que la tasa de mutaciones no sea igual en todas las especies, daños en las secuencias mas antiguas...**
+
+# Distancias
+```{r}
+distMat <- as.matrix(distancias)
+# Esto son vectores lógicos que podemos usar después para seleccionar filas
+# y columnas de la matriz de distancias.
+modernos     <- startsWith(colnames(distMat), 'H.s.modern')
+neandertales <- startsWith(colnames(distMat), 'H.s.neandertal')
+denisovanos  <- startsWith(colnames(distMat), 'H.s.denisova')
+chimpances   <- startsWith(colnames(distMat), 'P.troglodytes')
+bonobos      <- startsWith(colnames(distMat), 'P.paniscus')
+mean(distMat[modernos, neandertales])
+```
+## Ejercicio 4 
+Calcula las distancias medias entre todos los grupos.
+¿Cuántas veces mayor es la distancia entre humanos y chimpancés que entre humanos y neandertales?
+¿Cómo calcularías la distancia media entre dos secuencias de humanos modernos?
+```{r}
+dist_hum_nean <- mean(distMat[modernos, neandertales])
+mean(distMat[modernos, denisovanos])
+dist_hum_chimp <- mean(distMat[modernos, chimpances])
+mean(distMat[modernos, bonobos])
+proporcion_humchimp_humnean <- dist_hum_chimp / dist_hum_nean
+
+mean(distMat[neandertales, denisovanos])
+mean(distMat[neandertales, chimpances])
+mean(distMat[neandertales, bonobos])
+
+mean(distMat[denisovanos, chimpances])
+mean(distMat[denisovanos, bonobos])
+
+mean(distMat[chimpances, bonobos])
+
+# La función lower.tri() permite escoger solamente los valores del triangulo inferior de la matriz, por lo que solo se comparan entre humanos 1 vez y tampoco hay 0s
+matriz_modernos <- distMat[modernos, modernos]
+distancias_reales <- matriz_modernos[lower.tri(matriz_modernos)]
+mean(distancias_reales)
+
+```
+
+## Ejercicio 5:
+```{r}
+distCofen <- cophenetic(mt_nj_rooted)
+
+```
+¿Cuánto se parecen las distancias estimadas a las distancias cofenéticas?
+
+```{r}
+# Podemos plotear una matriz que tenga el EJEX una de las matrices y en el EJEY la otra, si sale una recta x = y es que son iguales las dos distancias (mas o menos)
+plot(distMat, distCofen, xlab = 'Distancias matriz NJ', ylab = 'Distancias cofenéticas')
+abline(a = 0, b = 1, col = 'blue', lty = 2)
+```
+
