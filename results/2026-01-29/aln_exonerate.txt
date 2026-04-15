@@ -1,4 +1,4 @@
-Command line: [exonerate --model est2genome HumanSMARCD2.fa HumanChr17.fa]
+Command line: [exonerate --model est2genome ../../data/HumanSMARCD2.fa ../../data/HumanChr17.fa]
 Hostname: [Federico]
 
 C4 Alignment:
@@ -138,8 +138,5 @@ C4 Alignment:
          ||||||
    944 : ACCTAA :   939
 
-vulgar: ENA|AAI36323|AAI36323.1 0 1485 + chromosome:GRCh38:17:63832000:63843000:1 10675 938 - 7224 M 61 61 5 0 2 
-I 0 107 3 0 2 M 44 44 5 0 2 I 0 4829 3 0 2 M 185 185 5 0 2 I 0 199 3 0 2 M 43 43 5 0 2 I 0 146 3 0 2 M 123 123 5 
-0 2 I 0 1350 3 0 2 M 156 156 5 0 2 I 0 607 3 0 2 M 96 96 5 0 2 I 0 125 3 0 2 M 102 102 5 0 2 I 0 141 3 0 2 M 162 
-162 5 0 2 I 0 156 3 0 2 M 98 98 5 0 2 I 0 182 3 0 2 M 136 136 5 0 2 I 0 162 3 0 2 M 123 123 5 0 2 I 0 123 3 0 2 
-M 102 102 5 0 2 I 0 73 3 0 2 M 54 54 -- completed exonerate analysis
+vulgar: ENA|AAI36323|AAI36323.1 0 1485 + chromosome:GRCh38:17:63832000:63843000:1 10675 938 - 7224 M 61 61 5 0 2 I 0 107 3 0 2 M 44 44 5 0 2 I 0 4829 3 0 2 M 185 185 5 0 2 I 0 199 3 0 2 M 43 43 5 0 2 I 0 146 3 0 2 M 123 123 5 0 2 I 0 1350 3 0 2 M 156 156 5 0 2 I 0 607 3 0 2 M 96 96 5 0 2 I 0 125 3 0 2 M 102 102 5 0 2 I 0 141 3 0 2 M 162 162 5 0 2 I 0 156 3 0 2 M 98 98 5 0 2 I 0 182 3 0 2 M 136 136 5 0 2 I 0 162 3 0 2 M 123 123 5 0 2 I 0 123 3 0 2 M 102 102 5 0 2 I 0 73 3 0 2 M 54 54
+-- completed exonerate analysis

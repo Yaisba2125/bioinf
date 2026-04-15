@@ -1,15 +1,15 @@
 ########################################
 # Program: water
-# Rundate: Wed  4 Feb 2026 11:18:04
+# Rundate: Wed 15 Apr 2026 16:29:09
 # Commandline: water
-#    -asequence HumanChr17.fa
-#    -bsequence HumanSMARCD2.fa
+#    -asequence ../../data/HumanChr17.fa
+#    -bsequence ../../data/HumanSMARCD2.fa
 #    -gapopen 10.0
 #    -gapextend 0.5
 #    -auto
-#    -outfile alnHuSmarWat.fa
+#    -outfile aln2.txt
 # Align_format: srspair
-# Report_file: alnHuSmarWat.fa
+# Report_file: aln2.txt
 ########################################
 
 #=======================================

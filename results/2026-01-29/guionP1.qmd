@@ -6,7 +6,7 @@ execute:
   output: true
   error: true
 engine: knitr
-bibliography: ../../references.bib
+bibliography: ../../doc/references.bib
 language:
    title-block-published: "Última actualización:"
    section-title-references: "Bibliografía"
@@ -117,21 +117,21 @@ debería guardarse en un archivo en formato de texto.
 # si fuera una carpeta seria -d
 if [ ! -e aln1.txt ]; then
    # Sólo descargaremos las secuencias, si no están ya descargadas.
-   if [ ! -e HumanSMARCD2.fa ]; then
+   if [ ! -e ../../data/HumanSMARCD2.fa ]; then
       # Con la opción "-O" (letra mayúscula, no número cero) indicamos
       # el nombre del archivo donde queremos guardar la secuencia.
-      wget -O HumanSMARCD2.fa https://www.ebi.ac.uk/ena/browser/api/fasta/AAI36323.1
+      wget -O ../../data/HumanSMARCD2.fa https://www.ebi.ac.uk/ena/browser/api/fasta/AAI36323.1
    fi
-   if [ ! -e HumanChr17.fa ]; then
-      wget -O HumanChr17.fa \
+   if [ ! -e ../../data/HumanChr17.fa ]; then
+      wget -O ../../data/HumanChr17.fa \
          https://rest.ensembl.org/sequence/region/human/17:63832000..63843000:1?content-type=text/x-fasta
    fi
    # Utilizamos el carácter "\" para que Bash ignore el salto de línea
    # y poder distribuir los argumentos y opciones en más de una línea.
    # las barras invertidas permiten ignorar lo que hay después, 
    # NO HAY QUE PONER ESPACIOS DESPUES DE ELLAS
-   needle -asequence HumanChr17.fa \
-          -bsequence HumanaSMARCD2.fa \
+   needle -asequence ../../data/HumanChr17.fa \
+          -bsequence ../../data/HumanSMARCD2.fa \
           -gapopen 15.0 \
           -gapextend 0.5 \
           -auto \
@@ -139,16 +139,121 @@ if [ ! -e aln1.txt ]; then
 fi
 ```
 
+
 :::{.callout-note icon=false}
 ## Desafíos
 0. Lee detenidamente las órdenes y los comentarios y asegúrate de entenderlos.
+**Hecho!**
+
 1. Si al ejecutarlas aparece algún mensaje de error, léelo y corrige el error.
+**He tenido que cambiar un Humana por Human, además he cambiado los directorios de guardado y lectura de archivos para que los .fa se guarden en la carpeta "data" mientras que los alineamientos se crean en la carpeta "results/2026-01-29"**
+
 2. Lee la ayuda del programa `needle` e intenta ajustar los parámetros
    para obtener un alineamiento más convincente.
+```{bash}
+needle -help -verbose
+#| eval: false
+
+if [ ! -e aln1_improved.txt ]; then
+   if [ ! -e ../../data/HumanSMARCD2.fa ]; then
+      wget -O ../../data/HumanSMARCD2.fa https://www.ebi.ac.uk/ena/browser/api/fasta/AAI36323.1
+   fi
+   if [ ! -e ../../data/HumanChr17.fa ]; then
+      wget -O ../../data/HumanChr17.fa \
+         https://rest.ensembl.org/sequence/region/human/17:63832000..63843000:1?content-type=text/x-fasta
+   fi
+   # He visto que el archivo del gen no contiene los intrones, por lo que el gapextend en 0.5 es muy penalizante, lo he disminuido hasta 0.05 para probar a ver si mejora. También he puesto gapopen en el valor predeterminado que recomienda la ayuda de needle
+   needle -asequence ../../data/HumanChr17.fa \
+          -bsequence ../../data/HumanSMARCD2.fa \
+          -gapopen 10.0 \
+          -gapextend 0.05 \
+          -auto \
+          -outfile aln1_improved.txt
+fi
+
+#He visto que si ha aumentado la similaridad un 3% y la puntuacion de 800 a 3000.
+```
+
 3. Prueba el programa `water`, para que el alineamiento sea local.
+```{bash}
+water -help -verbose
+#| eval: false
+
+if [ ! -e aln2.txt ]; then
+   if [ ! -e ../../data/HumanSMARCD2.fa ]; then
+      wget -O ../../data/HumanSMARCD2.fa https://www.ebi.ac.uk/ena/browser/api/fasta/AAI36323.1
+   fi
+   if [ ! -e ../../data/HumanChr17.fa ]; then
+      wget -O ../../data/HumanChr17.fa \
+         https://rest.ensembl.org/sequence/region/human/17:63832000..63843000:1?content-type=text/x-fasta
+   fi
+   water  -asequence ../../data/HumanChr17.fa \
+          -bsequence ../../data/HumanSMARCD2.fa \
+          -gapopen 10.0 \
+          -gapextend 0.5 \
+          -auto \
+          -outfile aln2.txt
+fi
+#Usando water obtenemos una mejor similaridad, aunque la puntuacion es menor, tambien conseguimos que no haya tanto % de gaps porque se deja de leer el cromosoma entero.
+
+```
+
 4. Intenta guardar el alineamiento en formato FASTA.
+```{bash}
+#| eval: false
+
+if [ ! -e aln_human_water.fasta ]; then
+   if [ ! -e ../../data/HumanSMARCD2.fa ]; then
+      wget -O ../../data/HumanSMARCD2.fa https://www.ebi.ac.uk/ena/browser/api/fasta/AAI36323.1
+   fi
+   if [ ! -e ../../data/HumanChr17.fa ]; then
+      wget -O ../../data/HumanChr17.fa \
+         https://rest.ensembl.org/sequence/region/human/17:63832000..63843000:1?content-type=text/x-fasta
+   fi
+   water  -asequence ../../data/HumanChr17.fa \
+          -bsequence ../../data/HumanSMARCD2.fa \
+          -gapopen 10.0 \
+          -gapextend 0.5 \
+          -auto \
+          -aformat3 fasta \
+          -outfile aln_human_water.fasta
+fi
+#Con el argumento "aformat3" podemos decirle que lo guarde en formato fasta. He guardado solo el alineamiento de Cromosoma humano con su gen usando water (local), los demas se guardarian de la misma manera.
+
+```
 5. Alinea también el tránscrito de SMARCD2 de chimpancé a su cromosoma.
+```{bash}
+#| eval: false
+if [ ! -e aln_chimp_needle.fasta ]; then
+   if [ ! -e ../../data/ChimpSMARCD2.fa ]; then
+      wget -O ../../data/ChimpSMARCD2.fa https://www.ebi.ac.uk/ena/browser/api/fasta/PNJ01291.1
+   fi
+   if [ ! -e ../../data/ChimpChr17.fa ]; then
+      wget -O ../../data/ChimpChr17.fa \
+         https://rest.ensembl.org/sequence/region/chimpanzee/17:63309800..63321000:1?content-type=text/x-fasta
+   fi
+   #Mantengo mi cambio de reducir el gapextend
+   needle -asequence ../../data/ChimpChr17.fa \
+          -bsequence ../../data/ChimpSMARCD2.fa \
+          -gapopen 10.0 \
+          -gapextend 0.05 \
+          -auto \
+          -aformat3 fasta \
+          -outfile aln_chimp_needle.fasta
+fi
+```
+
 6. Alinea también los dos fragmentos cromosómicos.
+```{bash}
+water     -asequence ../../data/ChimpChr17.fa \
+          -bsequence ../../data/HumanChr17.fa \
+          -gapopen 10.0 \
+          -gapextend 0.5 \
+          -auto \
+          -aformat3 fasta \
+          -outfile aln_chimp_human_water.fasta
+
+```
 :::
 
 Para alinear tránscritos o incluso proteínas a un genoma de referencia, es mejor
@@ -163,14 +268,14 @@ En el bloque siguiente repetimos el mismo alineamiento que antes, con `exonerate
 #| output: true
 #| error: true
 
-if [ ! -e HumanSMARCD2.fa ]; then
-   wget -O HumanSMARCD2.fa https://www.ebi.ac.uk/ena/browser/api/fasta/AAI36323.1
+if [ ! -e ../../data/HumanSMARCD2.fa ]; then
+   wget -O ../../data/HumanSMARCD2.fa https://www.ebi.ac.uk/ena/browser/api/fasta/AAI36323.1
 fi
-if [ ! -e HumanChr17.fa ]; then
-   wget -O HumanChr17.fa \
+if [ ! -e ../../data/HumanChr17.fa ]; then
+   wget -O ../../data/HumanChr17.fa \
       https://rest.ensembl.org/sequence/region/human/17:63832000..63843000:1?content-type=text/x-fasta
 fi
-exonerate --model est2genome HumanSMARCD2.fa HumanChr17.fa
+exonerate --model est2genome ../../data/HumanSMARCD2.fa ../../data/HumanChr17.fa
 ```
 
 En este caso, el alineamiento resultante no se ha enviado a un archivo, sino al
@@ -180,6 +285,12 @@ no hemos condicionado la ejecución.
 :::{.callout-note icon=false}
 ## Desafío
 ¿Cómo puedes enviar el resultado de `exonerate` a un archivo?
+En bash: 
+```{bash}
+exonerate --model est2genome ../../data/HumanSMARCD2.fa ../../data/HumanChr17.fa >aln_exonerate.txt
+
+#Usando el argumento > le puedes decir que escriba en un archivo lo que suele dar por pantalla
+```
 :::
 
 # Apéndice. Alineamientos múltiples
@@ -189,12 +300,12 @@ instalado, vamos a probarlo con una colección de secuencias que pertenecen
 a la familia [PF00009](https://www.ebi.ac.uk/interpro/entry/pfam/PF00009/):
 
 ```{bash}
-if [ ! -e PF00009.fa ]; then
-   wget -O PF00009.fa https://raw.githubusercontent.com/rcedgar/balifam/refs/heads/main/balifam100/in/PF00009.100
+if [ ! -e ../../data/PF00009.fa ]; then
+   wget -O ../../dataPF00009.fa https://raw.githubusercontent.com/rcedgar/balifam/refs/heads/main/balifam100/in/PF00009.100
 fi
 
 if [ ! -e PF00009.afa ]; then
-   muscle -align PF00009.fa -output PF00009.afa
+   muscle -align ../../dataPF00009.fa -output PF00009.afa
 fi
 ```
 
@@ -210,6 +321,8 @@ aumentar considerablemente su tamaño.
 #| warning: false
 
 library('htmltools')
+#Falta instalar DECIPHER:
+#BiocManager::install('DECIPHER')
 library('DECIPHER')
 PF00009 <- readAAStringSet('PF00009.afa')
 BrowseSeqs(PF00009, htmlFile = 'PF00009.html', openURL = FALSE)
