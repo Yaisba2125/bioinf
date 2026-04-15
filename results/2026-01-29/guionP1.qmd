@@ -301,11 +301,11 @@ a la familia [PF00009](https://www.ebi.ac.uk/interpro/entry/pfam/PF00009/):
 
 ```{bash}
 if [ ! -e ../../data/PF00009.fa ]; then
-   wget -O ../../dataPF00009.fa https://raw.githubusercontent.com/rcedgar/balifam/refs/heads/main/balifam100/in/PF00009.100
+   wget -O ../../data/PF00009.fa https://raw.githubusercontent.com/rcedgar/balifam/refs/heads/main/balifam100/in/PF00009.100
 fi
 
 if [ ! -e PF00009.afa ]; then
-   muscle -align ../../dataPF00009.fa -output PF00009.afa
+   muscle -align ../../data/PF00009.fa -output PF00009.afa
 fi
 ```
 
