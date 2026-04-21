@@ -1,0 +1,143 @@
+---
+title: "P10_ensamblaje"
+lang: es
+date: today
+execute: 
+  eval: true
+  error: true
+engine: knitr
+bibliography: ../../doc/references.bib
+language:
+   title-block-published: "Última actualización:"
+   section-title-references: "Bibliografía"
+format:
+   html:
+      embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Descarga de Hifiasm
+
+```{bash}
+if [ ! -d ~/bin ]; then mkdir ~/bin; fi
+cd ~/bin
+git clone https://github.com/chhylp123/hifiasm
+cd hifiasm
+make
+
+#Primero descargamos hifiasm
+
+#Lo ponemos en el PATH permanentemente para que siempre que se inicie bash esté ahi, solo ejecutarlo 1 vez
+# echo 'export PATH=$PATH:~/bin/hifiasm' >> ~/.bashrc
+# source ~/.bashrc
+```
+
+Descargamos el archivo disponible en el aula virtual y lo movemos a
+data, El archivo está comprimido asi que hay que descomprimirlo:
+
+```{bash}
+gunzip ../../data/At4.10.fa.gz
+```
+
+# Ejercicio 1: Revisión de Datos
+
+¿Cuántas secuencias contiene el archivo? **Se puede utilizar el comando
+grep para buscar "\>" que hay delante de cada secuencia, eso contará el
+numero de secuencias**
+
+```{bash}
+grep -c ">" ../../data/At4.10.fa
+```
+
+¿Qué longitudes mínima, media y máxima tienen las secuencias?
+**Ignoramos las cabeceras "\>" y contamos las bases de cada secuencia,
+luego se usan para encontrar la secuencia minima, maxima y media**
+
+```{bash}
+grep -v "^>" ../../data/At4.10.fa | awk '{len=length($0); sum+=len; if(min==""){min=max=len}; if(len<min){min=len}; if(len>max){max=len}; count++} END {print "Mínima:", min; print "Media:", sum/count; print "Máxima:", max}'
+```
+
+¿Cuál es el número total de bases? **Eliminamos las cabeceras y los
+saltos de linea y contamos todos los caracteres**
+
+```{bash}
+grep -v "^>" ../../data/At4.10.fa | tr -d '\n' | wc -c
+```
+
+Si se estimara que el genoma a ensamblar fuera de sólo 19 millones de
+bases, ¿cuál sería la cobertura esperada? **Calculamos de nuevo la
+longitud total y la dividimos entre la longitud del genoma a ensamblar
+para saber cuantas veces ha sido leído (mas o menos)**
+
+```{bash}
+grep -v "^>" ../../data/At4.10.fa | tr -d '\n' | wc -c | awk '{print $1 / 19000000}'
+```
+
+# Ejercicio 2: Ensamblaje
+
+Crearemos una carpeta para cada estrategia de ensamblado de esta manera:
+
+```{bash}
+# Con la ejecución condicional nos ahorramos algún mensaje de error:
+if [ ! -d asm1 ]; then mkdir asm1; fi
+```
+
+Ahora, para no leer los ensamblajes cada vez que se compile el script
+usamos condicionales de bash:
+
+```{bash}
+if [ ! -e asm1/At4.bp.p_ctg.gfa ]; then
+   ~/bin/hifiasm/hifiasm -o asm1/At4 -t 2 -f 0 ../../data/At4.10.fa 2> asm1/hifiasm.log
+fi
+```
+
+Consulta la ayuda de hifiasm (hifiasm -h) y contesta las preguntas
+siguientes:
+
+```{bash}
+~/bin/hifiasm/hifiasm -h
+```
+
+¿Los parámetros corresponden al ensamblaje de un genoma haploide o
+diploide? **Corresponden a un ensamblaje de un genoma diploide, además
+el ensmablaje devuelve archivos hap1 y hap2, haciendo alusión a las
+diferencias entre los haplotipos.**
+
+¿Qué nivel de eliminación de duplicaciones hemos aplicado? (El paso de
+eliminar duplicaciones sirve para que las zonas de alta heterocigosidad
+no sean ensambladas como contigs diferentes). **Se utiliza el valor por
+defecto, ya que no se ha especificado el parámetro -l, es el nivel 0,
+por lo que no hay purga**
+
+Si tuvieramos lecturas ultra-largas, ¿con qué opción o argumento
+añadiríamos esa información? **Se añadirían con el argumento --ul**
+
+# Ejercicio 3: Evaluación del Resultado
+
+Consulta la descripción de los archivos de salida que encontrarás en
+este
+[enlace](https://hifiasm.readthedocs.io/en/latest/interpreting-output.html)
+y contesta las preguntas siguientes:
+
+¿Dónde están las secuencias que componen el ensamblaje? **Se encuentran
+en el archivo At4.bp.p_ctg.gfa**
+
+En los archivos.gfa, ¿qué son las líneas que empiezan por ‘A’? **Son
+lineas que incluyen la información de las lecturas que se usan para
+construir los contigs, cada una está formada por columnas separadas por
+tabuladores y contiene información como el nombre del contig, la
+orientación de la hebra + o -, el nombre de la lectura, los coordenadas
+de start y end, el ID de la lectura, etc**
+
+¿Qué información tiene los archivos .bed? **Son coordenadas de regiones
+con calidad baja**
+
+¿Cuál es la cobertura media estimada de las secuencias homocigotas?
+**\[M::purge_dups\] homozygous read coverage threshold: 12**
+
+¿Y la de las heterocigotas? **\[M::ha_ft_gen\] peak_hom: 12; peak_het:
+-1, esto muestra que no ha encontrado pico heterocigoto, por lo que no
+se detecta ninguna cobertura, podriamos decir que el organismo de
+estudio se comporta como un haploide o muy homocigoto**
