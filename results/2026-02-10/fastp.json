@@ -319,5 +319,5 @@
 		"overrepresented_sequences": {
 		}
 	},
-	"command": "fastp -i DRR025089_1.fastq.gz -o DRR025089_1_clean.fastq -I DRR025089_2.fastq.gz -O DRR025089_2_clean.fastq --merge --merged_out DRR025089_m_clean.fastq "
+	"command": "fastp -i ../../data/DRR025089_1.fastq.gz -o DRR025089_1_clean.fastq -I ../../data/DRR025089_2.fastq.gz -O DRR025089_2_clean.fastq --merge --merged_out DRR025089_m_clean.fastq "
 }
