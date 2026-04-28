@@ -3098,7 +3098,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Última actualización:</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">21 de abril de 2026</p>
+      <p class="date">28 de abril de 2026</p>
     </div>
   </div>
   
@@ -3319,6 +3319,10 @@ See `https://hifiasm.readthedocs.io/en/latest/&#39; or `man ./hifiasm.1&#39; for
 <p>¿Qué información tiene los archivos .bed? <strong>Son coordenadas de regiones con calidad baja</strong></p>
 <p>¿Cuál es la cobertura media estimada de las secuencias homocigotas? <strong>[M::purge_dups] homozygous read coverage threshold: 12</strong></p>
 <p>¿Y la de las heterocigotas? <strong>[M::ha_ft_gen] peak_hom: 12; peak_het: -1, esto muestra que no ha encontrado pico heterocigoto, por lo que no se detecta ninguna cobertura, podriamos decir que el organismo de estudio se comporta como un haploide o muy homocigoto</strong></p>
+<p>Para cambiar el ensamblaje de GFA a FASTA:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;(/^S/){print &quot;&gt;&quot; $2 &quot;\n&quot; $3}&#39;</span> asm1/At4.bp.p_ctg.gfa <span class="op">&gt;</span> asm1/At4.fa</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 
 </main>

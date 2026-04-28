@@ -1,0 +1,80 @@
+[M::mp_ntseq_read@0.044*1.01] read 21971091 bases in 24 contigs
+[M::mp_idx_build@0.044*1.01] 171676 blocks
+[M::mp_idx_build@0.698*1.00] collected syncmers
+[M::mp_idx_build@0.811*1.00] 8993278 kmer-block pairs
+[M::mp_idx_print_stat] 1295584 distinct k-mers; mean occ of infrequent k-mers: 6.94; 0 frequent k-mers accounting for 0 occurrences
+[M::main] Version: 0.18-r281
+[M::main] CMD: /usr/local/bin/miniprot -t1 -d /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.mpi /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.fa
+[M::main] Real time: 0.871 sec; CPU: 0.871 sec; Peak RSS: 0.257 GB
+[M::mp_idx_restore@0.024*1.02] loaded the index
+[M::mp_mapopt_set_max_intron] set max intron size to 16875
+[M::mp_idx_print_stat] 1295584 distinct k-mers; mean occ of infrequent k-mers: 6.94; 0 frequent k-mers accounting for 0 occurrences
+[M::worker_pipeline::8.894*1.01] mapped 4178 sequences
+[M::worker_pipeline::12.349*1.00] mapped 1845 sequences
+[M::main] Version: 0.18-r281
+[M::main] CMD: /usr/local/bin/miniprot -I -ut1 --outn=1 --aln /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.mpi /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/../../data/proteinas.fasta
+[M::main] Real time: 12.351 sec; CPU: 12.404 sec; Peak RSS: 0.133 GB
+[M::mp_ntseq_read@0.046*1.00] read 21971091 bases in 24 contigs
+[M::mp_idx_build@0.046*1.00] 171676 blocks
+[M::mp_idx_build@0.686*1.00] collected syncmers
+[M::mp_idx_build@0.795*1.00] 8993278 kmer-block pairs
+[M::mp_idx_print_stat] 1295584 distinct k-mers; mean occ of infrequent k-mers: 6.94; 0 frequent k-mers accounting for 0 occurrences
+[M::main] Version: 0.18-r281
+[M::main] CMD: /usr/local/bin/miniprot -t1 -d /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.mpi /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.fa
+[M::main] Real time: 1.497 sec; CPU: 0.905 sec; Peak RSS: 0.257 GB
+[M::mp_idx_restore@0.024*1.06] loaded the index
+[M::mp_mapopt_set_max_intron] set max intron size to 16875
+[M::mp_idx_print_stat] 1295584 distinct k-mers; mean occ of infrequent k-mers: 6.94; 0 frequent k-mers accounting for 0 occurrences
+[M::worker_pipeline::8.925*1.01] mapped 4178 sequences
+[M::worker_pipeline::12.465*1.01] mapped 1845 sequences
+[M::main] Version: 0.18-r281
+[M::main] CMD: /usr/local/bin/miniprot -I -ut1 --outn=1 --aln /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.mpi /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/../../data/proteinas.fasta
+[M::main] Real time: 12.466 sec; CPU: 12.536 sec; Peak RSS: 0.134 GB
+[M::mp_ntseq_read@0.045*1.01] read 21971091 bases in 24 contigs
+[M::mp_idx_build@0.045*1.01] 171676 blocks
+[M::mp_idx_build@0.692*1.00] collected syncmers
+[M::mp_idx_build@0.799*1.00] 8993278 kmer-block pairs
+[M::mp_idx_print_stat] 1295584 distinct k-mers; mean occ of infrequent k-mers: 6.94; 0 frequent k-mers accounting for 0 occurrences
+[M::main] Version: 0.18-r281
+[M::main] CMD: /usr/local/bin/miniprot -t1 -d /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.mpi /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.fa
+[M::main] Real time: 1.425 sec; CPU: 0.900 sec; Peak RSS: 0.260 GB
+[M::mp_idx_restore@0.023*1.02] loaded the index
+[M::mp_mapopt_set_max_intron] set max intron size to 16875
+[M::mp_idx_print_stat] 1295584 distinct k-mers; mean occ of infrequent k-mers: 6.94; 0 frequent k-mers accounting for 0 occurrences
+[M::worker_pipeline::8.906*1.01] mapped 4178 sequences
+[M::worker_pipeline::12.359*1.01] mapped 1845 sequences
+[M::main] Version: 0.18-r281
+[M::main] CMD: /usr/local/bin/miniprot -I -ut1 --outn=1 --aln /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.mpi /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/../../data/proteinas.fasta
+[M::main] Real time: 12.359 sec; CPU: 12.426 sec; Peak RSS: 0.134 GB
+[M::mp_ntseq_read@0.046*1.01] read 21971091 bases in 24 contigs
+[M::mp_idx_build@0.046*1.01] 171676 blocks
+[M::mp_idx_build@0.693*1.00] collected syncmers
+[M::mp_idx_build@0.807*1.00] 8993278 kmer-block pairs
+[M::mp_idx_print_stat] 1295584 distinct k-mers; mean occ of infrequent k-mers: 6.94; 0 frequent k-mers accounting for 0 occurrences
+[M::main] Version: 0.18-r281
+[M::main] CMD: /usr/local/bin/miniprot -t1 -d /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.mpi /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.fa
+[M::main] Real time: 1.493 sec; CPU: 0.926 sec; Peak RSS: 0.259 GB
+[M::mp_idx_restore@0.043*1.03] loaded the index
+[M::mp_mapopt_set_max_intron] set max intron size to 16875
+[M::mp_idx_print_stat] 1295584 distinct k-mers; mean occ of infrequent k-mers: 6.94; 0 frequent k-mers accounting for 0 occurrences
+[M::worker_pipeline::9.006*1.01] mapped 4178 sequences
+[M::worker_pipeline::12.514*1.01] mapped 1845 sequences
+[M::main] Version: 0.18-r281
+[M::main] CMD: /usr/local/bin/miniprot -I -ut1 --outn=1 --aln /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.mpi /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/proteinas.fasta
+[M::main] Real time: 12.515 sec; CPU: 12.584 sec; Peak RSS: 0.134 GB
+[M::mp_ntseq_read@0.047*1.01] read 21971091 bases in 24 contigs
+[M::mp_idx_build@0.047*1.01] 171676 blocks
+[M::mp_idx_build@0.751*1.00] collected syncmers
+[M::mp_idx_build@0.866*1.00] 8993278 kmer-block pairs
+[M::mp_idx_print_stat] 1295584 distinct k-mers; mean occ of infrequent k-mers: 6.94; 0 frequent k-mers accounting for 0 occurrences
+[M::main] Version: 0.18-r281
+[M::main] CMD: /usr/local/bin/miniprot -t1 -d /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.mpi /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.fa
+[M::main] Real time: 1.558 sec; CPU: 0.981 sec; Peak RSS: 0.259 GB
+[M::mp_idx_restore@0.051*1.03] loaded the index
+[M::mp_mapopt_set_max_intron] set max intron size to 16875
+[M::mp_idx_print_stat] 1295584 distinct k-mers; mean occ of infrequent k-mers: 6.94; 0 frequent k-mers accounting for 0 occurrences
+[M::worker_pipeline::9.111*1.01] mapped 4178 sequences
+[M::worker_pipeline::12.617*1.01] mapped 1845 sequences
+[M::main] Version: 0.18-r281
+[M::main] CMD: /usr/local/bin/miniprot -I -ut1 --outn=1 --aln /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/genome.mpi /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/proteinas.fasta
+[M::main] Real time: 12.617 sec; CPU: 12.690 sec; Peak RSS: 0.134 GB

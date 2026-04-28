@@ -1,0 +1,58 @@
+==================================================
+file name: At4.fa                   
+sequences:            24
+total length:   21971091 bp  (21971091 bp excl N/X-runs)
+GC level:         36.50 %
+bases masked:    4773736 bp ( 21.73 %)
+==================================================
+               number of      length   percentage
+               elements*    occupied  of sequence
+--------------------------------------------------
+Retroelements         1866      1313958 bp    5.98 %
+   SINEs:                0            0 bp    0.00 %
+   Penelope:             0            0 bp    0.00 %
+   LINEs:              135        75495 bp    0.34 %
+    CRE/SLACS            0            0 bp    0.00 %
+     L2/CR1/Rex          0            0 bp    0.00 %
+     R1/LOA/Jockey       0            0 bp    0.00 %
+     R2/R4/NeSL          0            0 bp    0.00 %
+     RTE/Bov-B           0            0 bp    0.00 %
+     L1/CIN4           135        75495 bp    0.34 %
+   LTR elements:      1731      1238463 bp    5.64 %
+     BEL/Pao             0            0 bp    0.00 %
+     Ty1/Copia        1053        71036 bp    0.32 %
+     Gypsy/DIRS1       678      1167427 bp    5.31 %
+       Retroviral        0            0 bp    0.00 %
+
+DNA transposons        107        25052 bp    0.11 %
+   hobo-Activator        0            0 bp    0.00 %
+   Tc1-IS630-Pogo        0            0 bp    0.00 %
+   En-Spm                0            0 bp    0.00 %
+   MULE-MuDR            76        15340 bp    0.07 %
+   PiggyBac              0            0 bp    0.00 %
+   Tourist/Harbinger    31         9712 bp    0.04 %
+   Other (Mirage,        0            0 bp    0.00 %
+    P-element, Transib)
+
+Rolling-circles          0            0 bp    0.00 %
+
+Unclassified:          580      3086369 bp   14.05 %
+
+Total interspersed repeats:     4425379 bp   20.14 %
+
+
+Small RNA:               0            0 bp    0.00 %
+
+Satellites:              0            0 bp    0.00 %
+Simple repeats:       7006       263710 bp    1.20 %
+Low complexity:       1559        84647 bp    0.39 %
+==================================================
+
+* most repeats fragmented by insertions or deletions
+  have been counted as one element
+                                                      
+
+RepeatMasker version 4.2.3 , default mode                                         
+run with rmblastn version 2.14.1+
+The query was compared to classified sequences in "At4-families.fa"
+FamDB: 

@@ -1,0 +1,215 @@
+GBProcessor::getGeneList(): Stop codon out of sequence bounds. Ignoring sequence.
+Encountered error after reading 881 annotations.
+GBProcessor::getGeneList(): Stop codon out of sequence bounds. Ignoring sequence.
+Encountered error after reading 881 annotations.
+gene 1039_sp|P59224|RS132_ARATH transcr. 1 in sequence ptg000001l_48134-49624: Initial exon does not begin with start codon but with aca
+gene 3593_tr|A0A1P8B386|A0A1P8B386_ARATH transcr. 1 in sequence ptg000001l_72502-74420: Single exon gene does not begin with start codon but with caa
+gene 5509_sp|Q8LF09|FDL23_ARATH transcr. 1 in sequence ptg000001l_74421-77521: Initial exon does not begin with start codon but with gaa
+gene 3940_tr|A0A1P8B630|A0A1P8B630_ARATH transcr. 1 in sequence ptg000001l_79412-81517: coding length not a multiple of 3. Skipping...
+gene 3757_tr|A0A1P8B4K0|A0A1P8B4K0_ARATH transcr. 1 in sequence ptg000001l_137119-139589: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 1085_sp|Q67Z93|FRIG0_ARATH transcr. 1 in sequence ptg000001l_279623-281943: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4559_tr|F4JHP1|F4JHP1_ARATH transcr. 1 in sequence ptg000001l_375110-376897: coding length not a multiple of 3. Skipping...
+gene 5335_tr|Q5XV90|Q5XV90_ARATH transcr. 1 in sequence ptg000001l_491155-492710: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 3634_tr|A0A1P8B3J6|A0A1P8B3J6_ARATH transcr. 1 in sequence ptg000001l_602630-604707: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4487_tr|F4JG50|F4JG50_ARATH transcr. 1 in sequence ptg000002l_92450-93435: coding length not a multiple of 3. Skipping...
+gene 4488_tr|F4JG55|F4JG55_ARATH transcr. 1 in sequence ptg000002l_107241-109843: Initial exon does not begin with start codon but with tgt
+gene 5288_tr|Q3EAC9|Q3EAC9_ARATH transcr. 1 in sequence ptg000002l_205795-209552: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 3217_tr|Q8L7V7|Q8L7V7_ARATH transcr. 1 in sequence ptg000002l_221535-226436: Initial exon does not begin with start codon but with ctc
+gene 456_sp|Q8L7U4|P23A_ARATH transcr. 1 in sequence ptg000002l_414259-416245: Initial exon does not begin with start codon but with tac
+gene 782_sp|Q9SY09|SMD1B_ARATH transcr. 1 in sequence ptg000002l_604881-606879: Initial exon does not begin with start codon but with agg
+gene 1749_sp|Q56XE4|RU1C_ARATH transcr. 1 in sequence ptg000002l_726154-728042: Initial exon does not begin with start codon but with ttt
+gene 4008_tr|A0A1P8B6S2|A0A1P8B6S2_ARATH transcr. 1 in sequence ptg000002l_737355-738151: Initial exon does not begin with start codon but with gcg
+gene 4008_tr|A0A1P8B6S2|A0A1P8B6S2_ARATH transcr. 1 in sequence ptg000002l_737355-738151: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 1198_sp|Q93Z96|HEM62_ARATH transcr. 1 in sequence ptg000002l_753175-755111: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 34_tr|F4JI72|F4JI72_ARATH transcr. 1 in sequence ptg000002l_765630-768902: Initial exon does not begin with start codon but with ttt
+gene 6014_tr|Q9ZT72|Q9ZT72_ARATH transcr. 1 in sequence ptg000002l_863743-867830: Initial exon does not begin with start codon but with gga
+gene 5177_tr|Q0IGH7|Q0IGH7_ARATH transcr. 1 in sequence ptg000002l_1372648-1374972: Initial exon does not begin with start codon but with tat
+gene 1796_sp|Q8GWF4|MSRB6_ARATH transcr. 1 in sequence ptg000002l_1797043-1800479: Initial exon does not begin with start codon but with agc
+gene 1067_sp|Q3E7T8|UBQ14_ARATH transcr. 1 in sequence ptg000002l_1935574-1937836: Single exon gene does not begin with start codon but with gga
+gene 4233_tr|A0A1P8B8Q4|A0A1P8B8Q4_ARATH transcr. 1 in sequence ptg000002l_2194370-2197299: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4513_tr|F4JGI0|F4JGI0_ARATH transcr. 1 in sequence ptg000002l_2333593-2339605: Initial exon does not begin with start codon but with aca
+gene 4513_tr|F4JGI0|F4JGI0_ARATH transcr. 1 in sequence ptg000002l_2333593-2339605: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: Initial exon does not begin with start codon but with acg
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4512_tr|F4JGH9|F4JGH9_ARATH transcr. 1 in sequence ptg000002l_2342666-2350990: in-frame stop codon
+gene 4268_tr|A0A1P8B947|A0A1P8B947_ARATH transcr. 1 in sequence ptg000003l_103372-106171: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+ExonModel::processInternalExon: in-frame stop codon
+gene 3317_sp|Q9M063|GEML3_ARATH transcr. 1 in sequence ptg000004l_2746-5861: in-frame stop codon
+gene 3317_sp|Q9M063|GEML3_ARATH transcr. 1 in sequence ptg000004l_2746-5861: in-frame stop codon
+gene 1797_sp|Q8GWG2|TPPH_ARATH transcr. 1 in sequence ptg000004l_136174-140057: Initial exon does not begin with start codon but with tca
+gene 621_sp|Q9ASV5|MIC60_ARATH transcr. 1 in sequence ptg000004l_165676-170809: Initial exon does not begin with start codon but with ctt
+gene 366_sp|Q680I5|GAGT2_ARATH transcr. 1 in sequence ptg000004l_181899-184969: Initial exon does not begin with start codon but with atc
+gene 4986_tr|F4JW44|F4JW44_ARATH transcr. 1 in sequence ptg000004l_188317-190535: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 5963_tr|Q9T036|Q9T036_ARATH transcr. 1 in sequence ptg000004l_300079-301683: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 2081_sp|Q9T029|RS254_ARATH transcr. 1 in sequence ptg000004l_328857-331639: Initial exon does not begin with start codon but with cag
+gene 1580_sp|F4JVA9|SFH2_ARATH transcr. 1 in sequence ptg000004l_340634-344378: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4968_tr|F4JV88|F4JV88_ARATH transcr. 1 in sequence ptg000004l_383407-385828: Initial exon does not begin with start codon but with cta
+gene 1186_sp|Q8W570|UFD1C_ARATH transcr. 1 in sequence ptg000004l_436025-438835: Initial exon does not begin with start codon but with cag
+gene 1570_tr|F4JTQ0|F4JTQ0_ARATH transcr. 1 in sequence ptg000004l_572857-577332: Initial exon does not begin with start codon but with aga
+gene 2017_sp|Q9SVE7|DTX45_ARATH transcr. 1 in sequence ptg000004l_612843-616657: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 5842_tr|Q9SVF2|Q9SVF2_ARATH transcr. 1 in sequence ptg000004l_634774-636806: Single exon gene does not begin with start codon but with tat
+gene 5845_tr|Q9SVF6|Q9SVF6_ARATH transcr. 1 in sequence ptg000004l_644025-645339: Initial exon does not begin with start codon but with tat
+gene 2065_sp|Q9SZL7|FRS9_ARATH transcr. 1 in sequence ptg000004l_681687-683938: Initial exon does not begin with start codon but with gtg
+gene 2633_tr|B3H6P6|B3H6P6_ARATH transcr. 1 in sequence ptg000004l_701531-703077: Initial exon does not begin with start codon but with aag
+gene 2633_tr|B3H6P6|B3H6P6_ARATH transcr. 1 in sequence ptg000004l_701531-703077: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 1348_sp|Q9SZT9|GH32_ARATH transcr. 1 in sequence ptg000004l_1005715-1009487: coding length not a multiple of 3. Skipping...
+gene 4419_tr|B3H659|B3H659_ARATH transcr. 1 in sequence ptg000004l_1109123-1109492: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4457_tr|B6EUB9|B6EUB9_ARATH transcr. 1 in sequence ptg000004l_1142688-1144181: Initial exon does not begin with start codon but with aag
+gene 3697_tr|A0A1P8B423|A0A1P8B423_ARATH transcr. 1 in sequence ptg000004l_1248209-1249677: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 1891_sp|Q94A34|SFH12_ARATH transcr. 1 in sequence ptg000004l_1362838-1366661: Initial exon does not begin with start codon but with gtt
+gene 5098_tr|O65509|O65509_ARATH transcr. 1 in sequence ptg000004l_1468296-1474883: Initial exon does not begin with start codon but with aat
+gene 2484_tr|A0A1P8B7X6|A0A1P8B7X6_ARATH transcr. 1 in sequence ptg000004l_1474884-1478383: Initial exon does not begin with start codon but with tat
+gene 344_sp|Q42560|ACO1_ARATH transcr. 1 in sequence ptg000004l_1609575-1615600: Initial exon does not begin with start codon but with tca
+gene 5292_tr|Q494N5|Q494N5_ARATH transcr. 1 in sequence ptg000004l_1632904-1635312: Initial exon does not begin with start codon but with cag
+gene 4742_tr|F4JN47|F4JN47_ARATH transcr. 1 in sequence ptg000004l_1670751-1673948: Initial exon does not begin with start codon but with aaa
+gene 1624_sp|O23685|AP1S2_ARATH transcr. 1 in sequence ptg000004l_1754377-1756345: Initial exon does not begin with start codon but with cag
+gene 4082_tr|A0A1P8B7E7|A0A1P8B7E7_ARATH transcr. 1 in sequence ptg000004l_1769038-1770473: Initial exon does not begin with start codon but with acc
+gene 5115_tr|O65691|O65691_ARATH transcr. 1 in sequence ptg000004l_2031849-2033287: Single exon gene does not begin with start codon but with agt
+gene 1744_sp|Q42262|RS3A2_ARATH transcr. 1 in sequence ptg000004l_2037159-2039746: Initial exon does not begin with start codon but with aag
+gene 1036_sp|P53799|FDFT1_ARATH transcr. 1 in sequence ptg000004l_2046310-2050233: coding length not a multiple of 3. Skipping...
+gene 279_sp|Q05763|DRTS2_ARATH transcr. 1 in sequence ptg000004l_2073673-2078138: Initial exon does not begin with start codon but with ttt
+gene 3193_sp|Q8GYL5|RS253_ARATH transcr. 1 in sequence ptg000004l_2082135-2084113: Initial exon does not begin with start codon but with gca
+gene 1760_sp|Q680P8|RS29_ARATH transcr. 1 in sequence ptg000004l_2353931-2355421: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4604_tr|F4JJ05|F4JJ05_ARATH transcr. 1 in sequence ptg000004l_2445904-2446756: coding length not a multiple of 3. Skipping...
+gene 3093_sp|Q2V3C1|NLTPB_ARATH transcr. 1 in sequence ptg000004l_2520612-2521423: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 3557_tr|A0A178UWY3|A0A178UWY3_ARATH transcr. 1 in sequence ptg000004l_2653044-2656449: Initial exon does not begin with start codon but with cag
+gene 520_sp|Q8VYW1|PAPS4_ARATH transcr. 1 in sequence ptg000004l_2733128-2739105: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4966_tr|F4JV60|F4JV60_ARATH transcr. 1 in sequence ptg000004l_2746369-2756836: Initial exon does not begin with start codon but with cag
+gene 2846_tr|F4JUA6|F4JUA6_ARATH transcr. 1 in sequence ptg000004l_2952349-2956099: Initial exon does not begin with start codon but with ggt
+gene 1712_sp|P51424|RL391_ARATH transcr. 1 in sequence ptg000004l_3117715-3118692: Initial exon does not begin with start codon but with cag
+gene 1625_sp|O48549|RS61_ARATH transcr. 1 in sequence ptg000004l_3239961-3242600: Initial exon does not begin with start codon but with ttt
+gene 5484_tr|Q8L9R0|Q8L9R0_ARATH transcr. 1 in sequence ptg000004l_3442570-3444735: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 5104_tr|O65547|O65547_ARATH transcr. 1 in sequence ptg000004l_3476623-3477556: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4833_tr|F4JR37|F4JR37_ARATH transcr. 1 in sequence ptg000004l_3552362-3554049: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 2968_sp|O65569|RS112_ARATH transcr. 1 in sequence ptg000004l_3585401-3587947: Initial exon does not begin with start codon but with gtg
+gene 2782_tr|F4JPK5|F4JPK5_ARATH transcr. 1 in sequence ptg000004l_3783480-3786172: Initial exon does not begin with start codon but with acc
+gene 1347_sp|Q9SZR1|ACA10_ARATH transcr. 1 in sequence ptg000004l_3968619-3977235: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 2765_tr|F4JNQ9|F4JNQ9_ARATH transcr. 1 in sequence ptg000004l_4023231-4025596: Initial exon does not begin with start codon but with aag
+gene 1709_sp|P49689|RS30_ARATH transcr. 1 in sequence ptg000004l_4122276-4123388: Initial exon does not begin with start codon but with tca
+gene 5658_tr|Q9M0G1|Q9M0G1_ARATH transcr. 1 in sequence ptg000004l_4188134-4191231: Single exon gene does not begin with start codon but with act
+gene 432_sp|Q8GYD2|MND1_ARATH transcr. 1 in sequence ptg000004l_4202965-4205398: Initial exon does not begin with start codon but with cag
+gene 1791_sp|Q8GT73|BH119_ARATH transcr. 1 in sequence ptg000004l_4360066-4363595: Initial exon does not begin with start codon but with agg
+gene 4710_tr|F4JM26|F4JM26_ARATH transcr. 1 in sequence ptg000004l_4374139-4376375: Initial exon does not begin with start codon but with gct
+gene 3878_tr|A0A1P8B5H9|A0A1P8B5H9_ARATH transcr. 1 in sequence ptg000004l_4383531-4385286: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 890_sp|F4JM19|MYO14_ARATH transcr. 1 in sequence ptg000004l_4405655-4415776: Initial exon does not begin with start codon but with cag
+gene 2465_tr|A0A1P8B7T4|A0A1P8B7T4_ARATH transcr. 1 in sequence ptg000004l_4429552-4433765: Initial exon does not begin with start codon but with agg
+gene 1362_sp|Q9T091|VP26B_ARATH transcr. 1 in sequence ptg000004l_4761983-4764776: Initial exon does not begin with start codon but with cag
+gene 1132_sp|Q8L4N1|PHO34_ARATH transcr. 1 in sequence ptg000004l_4906848-4909373: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 2083_sp|Q9T043|RL142_ARATH transcr. 1 in sequence ptg000004l_4992965-4994646: Initial exon does not begin with start codon but with ggt
+gene 4978_tr|F4JVU5|F4JVU5_ARATH transcr. 1 in sequence ptg000004l_5019917-5030421: coding length not a multiple of 3. Skipping...
+gene 1869_sp|Q93W34|RP45C_ARATH transcr. 1 in sequence ptg000004l_5030422-5033690: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 5566_tr|Q8W569|Q8W569_ARATH transcr. 1 in sequence ptg000004l_5140250-5143762: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+ExonModel::processInternalExon: in-frame stop codon
+gene 4959_tr|F4JUX3|F4JUX3_ARATH transcr. 1 in sequence ptg000004l_5271719-5274908: in-frame stop codon
+gene 5934_tr|Q9SZI0|Q9SZI0_ARATH transcr. 1 in sequence ptg000004l_5371752-5373668: Initial exon does not begin with start codon but with tta
+gene 3451_sp|Q9SVZ9|ORP4A_ARATH transcr. 1 in sequence ptg000004l_5438694-5441319: Initial exon does not begin with start codon but with gca
+gene 2037_sp|Q9SW09|RS101_ARATH transcr. 1 in sequence ptg000004l_5478786-5481268: Initial exon does not begin with start codon but with cag
+gene 1086_sp|Q67ZM4|ADF7_ARATH transcr. 1 in sequence ptg000004l_5528194-5529477: Initial exon does not begin with start codon but with aag
+gene 560_sp|Q93ZG9|FKB53_ARATH transcr. 1 in sequence ptg000004l_5625405-5629201: Initial exon does not begin with start codon but with tta
+gene 5724_tr|Q9SB55|Q9SB55_ARATH transcr. 1 in sequence ptg000004l_5887715-5889202: Single exon gene does not begin with start codon but with cca
+gene 5253_tr|Q2HIQ5|Q2HIQ5_ARATH transcr. 1 in sequence ptg000004l_6168025-6169281: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 630_sp|Q9FE38|POT3_ARATH transcr. 1 in sequence ptg000004l_6263935-6268324: Initial exon does not begin with start codon but with cag
+gene 2763_tr|F4JNK0|F4JNK0_ARATH transcr. 1 in sequence ptg000004l_6345308-6347413: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4052_tr|A0A1P8B762|A0A1P8B762_ARATH transcr. 1 in sequence ptg000004l_6374301-6377067: coding length not a multiple of 3. Skipping...
+gene 971_sp|O65483|CRK24_ARATH transcr. 1 in sequence ptg000004l_6396449-6399381: coding length not a multiple of 3. Skipping...
+gene 4732_tr|F4JMQ8|F4JMQ8_ARATH transcr. 1 in sequence ptg000004l_6528372-6534054: coding length not a multiple of 3. Skipping...
+gene 4311_tr|A0JPV5|A0JPV5_ARATH transcr. 1 in sequence ptg000004l_6990132-6991697: Initial exon does not begin with start codon but with gtg
+gene 1655_sp|O65413|STP12_ARATH transcr. 1 in sequence ptg000004l_7157658-7160298: coding length not a multiple of 3. Skipping...
+gene 1011_sp|P0DH87|PSRK_ARATH transcr. 1 in sequence ptg000004l_7205466-7208996: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 3983_tr|A0A1P8B6J4|A0A1P8B6J4_ARATH transcr. 1 in sequence ptg000004l_7347919-7348580: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 3952_tr|A0A1P8B658|A0A1P8B658_ARATH transcr. 1 in sequence ptg000004l_7499319-7501646: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 3695_tr|A0A1P8B417|A0A1P8B417_ARATH transcr. 1 in sequence ptg000004l_7501647-7503754: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 2961_sp|O65438|C71AR_ARATH transcr. 1 in sequence ptg000004l_7658458-7662175: coding length not a multiple of 3. Skipping...
+gene 3041_sp|P58047|C71AS_ARATH transcr. 1 in sequence ptg000004l_7662176-7665504: coding length not a multiple of 3. Skipping...
+gene 4908_tr|F4JT92|F4JT92_ARATH transcr. 1 in sequence ptg000004l_7911583-7916562: Initial exon does not begin with start codon but with agg
+gene 1557_tr|F4JSF8|F4JSF8_ARATH transcr. 1 in sequence ptg000004l_8135301-8139049: Initial exon does not begin with start codon but with att
+gene 5172_sp|P42735|CDI8_ARATH transcr. 1 in sequence ptg000004l_8145337-8147111: Initial exon does not begin with start codon but with cag
+gene 213_sp|P17839|AG_ARATH transcr. 1 in sequence ptg000004l_8205096-8210643: Initial exon does not begin with start codon but with acg
+gene 1024_sp|P42794|RL112_ARATH transcr. 1 in sequence ptg000004l_8290242-8291845: Initial exon does not begin with start codon but with cag
+gene 4857_tr|F4JRK4|F4JRK4_ARATH transcr. 1 in sequence ptg000004l_8372878-8375995: Initial exon does not begin with start codon but with aaa
+gene 3717_tr|A0A1P8B498|A0A1P8B498_ARATH transcr. 1 in sequence ptg000004l_8519944-8521763: Initial exon does not begin with start codon but with tta
+gene 5863_tr|Q9SVW2|Q9SVW2_ARATH transcr. 1 in sequence ptg000004l_8558338-8559645: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4182_tr|A0A1P8B877|A0A1P8B877_ARATH transcr. 1 in sequence ptg000004l_9108785-9110867: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 5417_tr|Q8GWM8|Q8GWM8_ARATH transcr. 1 in sequence ptg000004l_9117671-9118754: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 1619_sp|O23515|RL151_ARATH transcr. 1 in sequence ptg000004l_9191535-9193715: Initial exon does not begin with start codon but with ata
+gene 4718_tr|F4JMH6|F4JMH6_ARATH transcr. 1 in sequence ptg000004l_9283112-9286101: coding length not a multiple of 3. Skipping...
+gene 5240_tr|Q1PE76|Q1PE76_ARATH transcr. 1 in sequence ptg000004l_9309422-9311827: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4702_tr|F4JLS2|F4JLS2_ARATH transcr. 1 in sequence ptg000004l_9368158-9370970: coding length not a multiple of 3. Skipping...
+gene 5031_tr|O23471|O23471_ARATH transcr. 1 in sequence ptg000004l_9404571-9406555: Single exon gene does not begin with start codon but with ggt
+gene 2927_sp|O23469|GDL63_ARATH transcr. 1 in sequence ptg000004l_9411690-9416551: coding length not a multiple of 3. Skipping...
+gene 5030_tr|O23467|O23467_ARATH transcr. 1 in sequence ptg000004l_9421175-9423186: coding length not a multiple of 3. Skipping...
+gene 1832_sp|Q8LF65|ATL17_ARATH transcr. 1 in sequence ptg000004l_9543931-9546052: coding length not a multiple of 3. Skipping...
+gene 5163_sp|P0C042|Y4597_ARATH transcr. 1 in sequence ptg000004l_9546053-9549486: coding length not a multiple of 3. Skipping...
+ExonModel::processInternalExon: in-frame stop codon
+gene 4673_tr|F4JKW8|F4JKW8_ARATH transcr. 1 in sequence ptg000004l_9602792-9605167: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4673_tr|F4JKW8|F4JKW8_ARATH transcr. 1 in sequence ptg000004l_9602792-9605167: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4672_tr|F4JKW7|F4JKW7_ARATH transcr. 1 in sequence ptg000004l_9605168-9609503: in-frame stop codon
+ExonModel::processInternalExon: in-frame stop codon
+gene 4672_tr|F4JKW7|F4JKW7_ARATH transcr. 1 in sequence ptg000004l_9605168-9609503: in-frame stop codon
+gene 412_sp|Q8GW48|HSBP_ARATH transcr. 1 in sequence ptg000004l_9609504-9611873: Initial exon does not begin with start codon but with cag
+gene 4643_tr|F4JK86|F4JK86_ARATH transcr. 1 in sequence ptg000004l_9620284-9622742: coding length not a multiple of 3. Skipping...
+gene 4642_tr|F4JK85|F4JK85_ARATH transcr. 1 in sequence ptg000004l_9622743-9625751: coding length not a multiple of 3. Skipping...
+gene 3211_tr|Q8L7C0|Q8L7C0_ARATH transcr. 1 in sequence ptg000004l_9790828-9794710: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 2923_tr|O23389|O23389_ARATH transcr. 1 in sequence ptg000004l_9825133-9828690: coding length not a multiple of 3. Skipping...
+gene 111_sp|O23372|ATXR3_ARATH transcr. 1 in sequence ptg000004l_9935355-9946836: coding length not a multiple of 3. Skipping...
+gene 5024_tr|O23369|O23369_ARATH transcr. 1 in sequence ptg000004l_9954720-9956979: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 3608_tr|A0A1P8B3C9|A0A1P8B3C9_ARATH transcr. 1 in sequence ptg000004l_10022218-10022828: coding length not a multiple of 3. Skipping...
+gene 384_sp|Q7XA73|TIF4A_ARATH transcr. 1 in sequence ptg000004l_10167961-10171294: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 2918_sp|O23317|DRL24_ARATH transcr. 1 in sequence ptg000004l_10214308-10217262: coding length not a multiple of 3. Skipping...
+gene 1900_sp|Q94CG2|BET12_ARATH transcr. 1 in sequence ptg000004l_10285089-10287631: Initial exon does not begin with start codon but with ttt
+gene 4973_tr|F4JVE8|F4JVE8_ARATH transcr. 1 in sequence ptg000004l_10318628-10323987: Initial exon does not begin with start codon but with gtt
+gene 2854_tr|F4JUQ4|F4JUQ4_ARATH transcr. 1 in sequence ptg000004l_10354243-10356465: Initial exon does not begin with start codon but with gtg
+gene 3013_sp|P0CAY0|DEF28_ARATH transcr. 1 in sequence ptg000004l_10377573-10378643: coding length not a multiple of 3. Skipping...
+gene 3032_sp|P0DKI4|PUX14_ARATH transcr. 1 in sequence ptg000004l_10383788-10386862: in-frame stop codon
+gene 350_sp|Q4TU14|RHF1A_ARATH transcr. 1 in sequence ptg000004l_10399516-10402581: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 2915_sp|O23278|PP310_ARATH transcr. 1 in sequence ptg000004l_10412619-10414418: coding length not a multiple of 3. Skipping...
+gene 2851_tr|F4JUL8|F4JUL8_ARATH transcr. 1 in sequence ptg000004l_10440953-10444395: Initial exon does not begin with start codon but with cag
+gene 5280_sp|Q3EA38|FDL48_ARATH transcr. 1 in sequence ptg000004l_10529619-10532778: Initial exon does not begin with start codon but with aaa
+gene 5427_tr|Q8GXU7|Q8GXU7_ARATH transcr. 1 in sequence ptg000004l_10672017-10674265: Initial exon does not begin with start codon but with tcg
+gene 5299_tr|Q52K84|Q52K84_ARATH transcr. 1 in sequence ptg000004l_10865149-10867643: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 4846_tr|F4JRD9|F4JRD9_ARATH transcr. 1 in sequence ptg000004l_11130061-11135460: Initial exon does not begin with start codon but with cag
+gene 3704_tr|A0A1P8B453|A0A1P8B453_ARATH transcr. 1 in sequence ptg000004l_11162391-11164789: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 3381_tr|Q9STI3|Q9STI3_ARATH transcr. 1 in sequence ptg000004l_11294271-11297015: Initial exon does not begin with start codon but with ccg
+gene 3382_tr|Q9STI4|Q9STI4_ARATH transcr. 1 in sequence ptg000004l_11297501-11301119: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 3048_sp|P82640|DF237_ARATH transcr. 1 in sequence ptg000004l_11969872-11971847: coding length not a multiple of 3. Skipping...
+gene 2108_sp|Q9ZSB1|SBT3A_ARATH transcr. 1 in sequence ptg000004l_12085846-12090284: coding length not a multiple of 3. Skipping...
+gene 1020_sp|P34788|RS18_ARATH transcr. 1 in sequence ptg000004l_12422752-12424708: Initial exon does not begin with start codon but with tct
+gene 2699_tr|F4JK28|F4JK28_ARATH transcr. 1 in sequence ptg000004l_12519142-12521587: Initial exon does not begin with start codon but with cag
+gene 4608_tr|F4JJ97|F4JJ97_ARATH transcr. 1 in sequence ptg000004l_12814173-12816850: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 3312_tr|Q9C5N3|Q9C5N3_ARATH transcr. 1 in sequence ptg000004l_12849494-12852561: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 347_sp|Q43125|CRY1_ARATH transcr. 1 in sequence ptg000004l_12870444-12874628: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 611_sp|Q94JV5|NILP2_ARATH transcr. 1 in sequence ptg000004l_12985880-12989553: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 3248_sp|Q8RY83|PUP13_ARATH transcr. 1 in sequence ptg000004l_13032890-13035864: Single exon gene does not begin with start codon but with aca
+gene 5210_tr|Q1G388|Q1G388_ARATH transcr. 1 in sequence ptg000004l_13043621-13046013: Single exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 346_sp|Q42592|APXS_ARATH transcr. 1 in sequence ptg000004l_13283145-13286881: Terminal exon doesn't end in stop codon. Variable stopCodonExcludedFromCDS set right?
+gene 5752_tr|Q9STN1|Q9STN1_ARATH transcr. 1 in sequence ptg000004l_13296674-13299915: in-frame stop codon
+gene 4475_tr|F4JFX4|F4JFX4_ARATH transcr. 1 in sequence ptg000004l_13790656-13793037: Initial exon does not begin with start codon but with gtg
+gene 4525_tr|F4JGJ8|F4JGJ8_ARATH transcr. 1 in sequence ptg000004l_14143844-14146349: Initial exon does not begin with start codon but with gtt

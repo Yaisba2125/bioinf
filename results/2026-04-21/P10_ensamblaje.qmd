@@ -141,3 +141,8 @@ con calidad baja**
 -1, esto muestra que no ha encontrado pico heterocigoto, por lo que no
 se detecta ninguna cobertura, podriamos decir que el organismo de
 estudio se comporta como un haploide o muy homocigoto**
+
+Para cambiar el ensamblaje de GFA a FASTA:
+```{bash}
+awk '(/^S/){print ">" $2 "\n" $3}' asm1/At4.bp.p_ctg.gfa > asm1/At4.fa
+```

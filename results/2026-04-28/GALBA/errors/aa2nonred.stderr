@@ -1,0 +1,94 @@
+diamond v0.9.24.125 | by Benjamin Buchfink <buchfink@gmail.com>
+Licensed under the GNU GPL <https://www.gnu.org/licenses/gpl.txt>
+Check http://github.com/bbuchfink/diamond for updates.
+
+#CPU threads: 1
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+Database file: /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA/traingenes.good.fa.nonreddb
+Opening the database file...  [8.9e-05s]
+Loading sequences...  [0.005065s]
+Masking sequences...  [0.379467s]
+Writing sequences...  [0.001124s]
+Hashing sequences...  [0.000388s]
+Loading sequences...  [6e-06s]
+Writing trailer...  [3.5e-05s]
+Closing the input file...  [7e-06s]
+Closing the database file...  [1e-05s]
+Database hash = 13f713c78cc1ac1aee545fb6ac869865
+Processed 3938 sequences, 1641945 letters.
+Total time = 0.386298s
+diamond v0.9.24.125 | by Benjamin Buchfink <buchfink@gmail.com>
+Licensed under the GNU GPL <https://www.gnu.org/licenses/gpl.txt>
+Check http://github.com/bbuchfink/diamond for updates.
+
+#CPU threads: 8
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+Temporary directory: /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/GALBA
+Opening the database...  [3.4e-05s]
+#Target sequences to report alignments for: 25
+Opening the input file...  [2.5e-05s]
+Opening the output file...  [1.6e-05s]
+Loading query sequences...  [0.005139s]
+Masking queries...  [0.063004s]
+Building query seed set...  [0.008708s]
+Algorithm: Double-indexed
+Building query histograms...  [0.005233s]
+Allocating buffers...  [2e-05s]
+Loading reference sequences...  [0.001657s]
+Building reference histograms...  [0.005342s]
+Allocating buffers...  [1.8e-05s]
+Initializing temporary storage...  [0.002051s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 0.
+Building reference index...  [0.007245s]
+Building query index...  [0.007178s]
+Building seed filter...  [0.001253s]
+Searching alignments...  [0.026777s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 1.
+Building reference index...  [0.006672s]
+Building query index...  [0.006513s]
+Building seed filter...  [0.001208s]
+Searching alignments...  [0.023501s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 2.
+Building reference index...  [0.00677s]
+Building query index...  [0.006746s]
+Building seed filter...  [0.001222s]
+Searching alignments...  [0.022517s]
+Processing query chunk 0, reference chunk 0, shape 0, index chunk 3.
+Building reference index...  [0.005746s]
+Building query index...  [0.005789s]
+Building seed filter...  [0.001034s]
+Searching alignments...  [0.021782s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 0.
+Building reference index...  [0.005813s]
+Building query index...  [0.005879s]
+Building seed filter...  [0.001194s]
+Searching alignments...  [0.020371s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 1.
+Building reference index...  [0.006458s]
+Building query index...  [0.006451s]
+Building seed filter...  [0.001078s]
+Searching alignments...  [0.020389s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 2.
+Building reference index...  [0.006643s]
+Building query index...  [0.006668s]
+Building seed filter...  [0.001124s]
+Searching alignments...  [0.020474s]
+Processing query chunk 0, reference chunk 0, shape 1, index chunk 3.
+Building reference index...  [0.005861s]
+Building query index...  [0.005906s]
+Building seed filter...  [0.001012s]
+Searching alignments...  [0.020268s]
+Deallocating buffers...  [6e-05s]
+Computing alignments...  [0.397344s]
+Deallocating reference...  [7e-06s]
+Loading reference sequences...  [1e-05s]
+Deallocating buffers...  [4.4e-05s]
+Deallocating queries...  [7.4e-05s]
+Loading query sequences...  [6e-06s]
+Closing the input file...  [5e-06s]
+Closing the output file...  [9e-06s]
+Closing the database file...  [3e-06s]
+Deallocating taxonomy...  [2e-06s]
+Total time = 0.777587s
+Reported 13837 pairwise alignments, 13868 HSPs.
+3936 queries aligned.
