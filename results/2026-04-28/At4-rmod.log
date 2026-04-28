@@ -1,0 +1,108 @@
+RepeatModeler Version 2.0.7
+===========================
+Using output directory = /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/RM_380234.MonApr202303552026
+Search Engine = rmblast 2.14.1+
+Threads = 6
+Dependencies: TRF 4.09, RECON , RepeatScout 1.0.7, RepeatMasker 4.2.3, RepeatAfterMe 0.0.7
+LTR Structural Analysis: Disabled [use -LTRStruct to enable]
+Random Number Seed: 1776719032
+Database = /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/At4 
+  - Sequences = 24
+  - Bases = 21971091
+Storage Throughput = excellent ( 1763.66 MB/s )
+
+
+RepeatModeler Round # 1
+========================
+Searching for Repeats
+ -- Sampling from the database...
+   - Gathering up to 40000000 bp
+   - Final Sample Size = 21970978 bp ( 21970978 non ambiguous )
+   - Num Contigs Represented = 24
+   - Sequence extraction : 00:00:03 (hh:mm:ss) Elapsed Time
+ -- Running RepeatScout on the sequences...
+   - RepeatScout: Running build_lmer_table ( l = 14, min = 10 )..
+   - RepeatScout: Running RepeatScout.. : 130 raw families identified
+   - RepeatScout: Running filtering stage.. 0 families remaining
+   - RepeatScout: 00:02:50 (hh:mm:ss) Elapsed Time
+NOTE: RepeatScout did not return any models.
+Round Time: 00:02:53 (hh:mm:ss) Elapsed Time : 0 families discovered.
+
+
+RepeatModeler Round # 2
+========================
+Searching for Repeats
+ -- Sampling from the database...
+   - Gathering up to 10000000 bp
+   - Sequence extraction : 00:00:01 (hh:mm:ss) Elapsed Time
+ -- Running TRFMask on the sequence...
+   - TRFMask time 00:00:43 (hh:mm:ss) Elapsed Time
+ -- Sample Stats:
+       Sample Size 10014938 bp
+       Num Contigs Represented = 19
+       Non ambiguous bp:
+             Initial: 10014938 bp
+             After Masking: 8608040 bp
+             Masked: 14.05 % 
+ -- Input Database Coverage: 10014938 bp out of 21971091 bp ( 45.58 % )
+Sampling Time: 00:00:46 (hh:mm:ss) Elapsed Time
+Running all-by-other comparisons...
+  - Total Comparisons = 32896
+Comparison Time: 00:20:11 (hh:mm:ss) Elapsed Time, 26717 HSPs Collected
+Number of families returned by RECON: 1357
+Round Time: 00:32:03 (hh:mm:ss) Elapsed Time : 14 families discovered.
+   - Increasing sample size to include end piece now = 41971091
+
+
+RepeatModeler Round # 3
+========================
+Searching for Repeats
+ -- Sampling from the database...
+   - Gathering up to 41971091 bp
+   - Sequence extraction : 00:00:01 (hh:mm:ss) Elapsed Time
+ -- Running TRFMask on the sequence...
+   - TRFMask time 00:00:39 (hh:mm:ss) Elapsed Time
+ -- Masking repeats from the previous rounds...
+       1062 repeats masked totaling 638041 bp(s).
+   - TE Masking time 00:00:14 (hh:mm:ss) Elapsed Time
+ -- Sample Stats:
+       Sample Size 11955960 bp
+       Num Contigs Represented = 18
+       Non ambiguous bp:
+             Initial: 11955960 bp
+             After Masking: 9282275 bp
+             Masked: 22.36 % 
+ -- Input Database Coverage: 21970898 bp out of 21971091 bp ( 100.00 % )
+Sampling Time: 00:00:57 (hh:mm:ss) Elapsed Time
+Running all-by-other comparisons...
+  - Total Comparisons = 46056
+Comparison Time: 00:24:37 (hh:mm:ss) Elapsed Time, 12726 HSPs Collected
+Number of families returned by RECON: 1609
+Round Time: 00:26:48 (hh:mm:ss) Elapsed Time : 10 families discovered.
+
+RepeatScout/RECON discovery complete: 24 families found
+
+
+#
+# RepeatClassifier
+#
+# Version 2.0.7
+# Threads: 6
+# Current Working Directory: /home/joiglu/Documents/docencia/Bioinformatica_33190/Practica/P11_annotation/RM_380234.MonApr202303552026
+# Protein Library: /usr/local/RepeatMasker/Libraries/RepeatPeps.lib
+#   - 18011 proteins
+# Consensi Library: /usr/local/RepeatMasker/Libraries/RepeatMasker.lib
+#   - 479 consensus sequences
+# !!!! WARNING !!!! -- The curated TE consensus library does not appear to be complete.
+#                      This may result in poor clasification performance.  Please
+#                      ensure that you have the latest version of RepeatMasker
+#                      installed and that you have installed the complete set of Dfam
+#                      partitions.
+  - Looking for simple/tandem and low complexity sequences..
+  - Looking for similarity to known repeat proteins..
+  - Looking for similarity to known repeat consensi..
+
+Classification Time: 00:00:32 (hh:mm:ss) Elapsed Time
+
+
+Program Time: 01:02:16 (hh:mm:ss) Elapsed Time

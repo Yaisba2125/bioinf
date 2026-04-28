@@ -1,0 +1,176 @@
+---
+title: "Práctia 11. Anotación"
+lang: es
+date: today
+execute: 
+  output: true
+  error: true
+engine: knitr
+bibliography: ../../doc/references.bib
+language:
+   title-block-published: "Última actualización:"
+   section-title-references: "Bibliografía"
+format:
+   html:
+      embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Descarga de datos
+
+Para descargar las 6023 secuencias de proteínas del cromosoma 4 de *A.
+thaliana* se puede realizar de la siguiente manera:
+
+```{bash}
+curl -o ../../data/secuencias_cromosoma4.fasta.gz "https://rest.uniprot.org/uniprotkb/stream?compressed=true&format=fasta&query=%28%28proteome%3AUP000006548%29+AND+%28proteomecomponent%3A%22Chromosome+4%22%29%29"
+
+gunzip ../../data/secuencias_cromosoma4.fasta.gz
+```
+
+Para anotar se han de pasar los ensamblajes por los programas
+**RepeatModeler** y **RepeatMasker** para enmascarar los elementos
+repetitivos, pero esto no se realizará en esta práctica.
+
+# RESULTADOS
+
+## Ejercicio 1
+
+Se quiere reducir el tamaño de las cabeceras de las secuencias
+descargadas anteriormente:
+
+Sabiendo que una forma de hacerlo es la siguiente, incluye la orden en
+un bloque de Bash de tu documento de Quarto de tal manera que el archivo
+de entrada esté en tu carpeta data y el de salida en la misma carpeta de
+trabajo de la práctica actual, y además, que sólo se ejecute si el
+archivo de salida proteinas.fasta no existe.
+
+awk '(/\^\>/){split(\$1, A, /\|/); print "\>" A\[2\]}(/\[\^1\]/){print
+\$0}'
+
+```{bash}
+if [ ! -e proteinas.fasta ]; then
+  awk '(/^>/){split($1, A, /\|/); print ">" A[2]}(/^[^>]/){print $0}' ../../data/secuencias_cromosoma4.fasta >proteinas.fasta
+fi
+```
+
+# RepeatModeler
+
+## Ejercicio 2: Análisis de RepeatModeler
+
+Estos son los comandos que deberían correrse
+
+```{bash}
+#| eval: false
+
+# Paso previo para convertir el ensamblaje en una base de datos de BLAST:
+BuildDatabase -name At4 ../2026-04-21/asm1/At4.fa
+
+RepeatModeler -database At4 -threads 6 >& run.log
+
+```
+
+Explora los resultados de RepeatModeler y trata de contestar las
+preguntas siguientes.
+
+¿Cuántas familias de elementos transponibles se han encontrado? **Se
+puede ver de dos formas, o contando todas las cabeceras en el .FASTA de
+familias o buscando en el LOG, ambos resultados dan 24 familias**
+
+```{bash}
+grep -c "^>" At4-families.fa
+```
+
+¿Cuánto duró la ejecución del programa? **Según el log: Program Time:
+01:02:16 (hh:mm:ss) Elapsed Time**
+```{bash}
+grep 'Program Time' RM_380234.MonApr202303552026/rmod.log
+```
+
+¿Cuál dirías que es el archivo de salida más importante? **Seguramente
+el At4-families.fa, ya que contiene las secuencias de todas las familias
+que se consideran elementos repetitivos, esto servirá para pasarselo a
+RepeatMasker**
+
+# RepeatMasker
+
+## Ejercicio 3: Suavizar la máscara
+
+Ejecutando *RepeatMasker* de la siguiente manera:
+
+```{bash}
+#| eval: false
+
+RepeatMasker -lib At4-families.fa -dir RM01 -gtf ../2026-04-21/asm1/At4.fa
+```
+
+Instala el programa bedtools siguiendo las instrucciones oportunas para
+tu sistema en la [pagina
+oficial](https://bedtools.readthedocs.io/en/latest/content/installation.html)
+
+Utiliza el ensamblaje original como archivo FASTA de entrada y el
+archivo GFF que ha producido RepetaMasker como coordenadas de las
+regiones a enmascarar. Lee el manual de bedtools maskfasta en este
+[enlace](https://open.bioqueue.org/home/knowledge/showKnowledge/sig/bedtools-maskfasta)
+y genera el ensamblaje con máscara suave llamado *At4.soft.fa*.
+
+**El genoma está "hardkmasked", para softearlo usaremos bedtools:**
+
+```{bash}
+if [ ! -e At4.soft.fa ]; then
+  bedtools maskfasta -soft -fi ../2026-04-21/asm1/At4.fa -bed RM01/At4.fa.out.gff -fo At4.soft.fa
+fi
+```
+**Se pueden comprobar ambos archivos así:**
+```{bash}
+#| eval: false
+
+head -n 5 At4.soft.fa #No lo corro porque el archivo tiene todo el contig en una sola linea, el documento se carga demasiado, en los espacios repetitivos se ven minusculas
+```
+
+```{bash}
+#| eval: false
+
+head -n 20 RM01/At4.fa.masked #No se corre para no ocupar espacio, en los espacios repetitivos veremos Ns
+```
+
+# GALBA
+Para ejecutar GALBA:
+```{bash}
+export TSEBRA_PATH=/home/joiglu/bin/TSEBRA/bin/
+export MINIPROTHINT_PATH=/home/joiglu/bin/miniprothint/
+
+galba.pl --species="Arabidopsis thaliana" \
+         --genome=At4.soft.fa \
+         --prot_seq=proteinas.fasta
+```
+
+## Ejercicio 4
+Incluye en tu documento de Quarto un bloque de código (pero no ejecutable, con la opción eval: false) como el anterior, donde los caminos TSERBA y a MINIPROTHINT se correspondan con tu propia carpeta bin, aunque no los tengas instalados.
+```{bash}
+#| eval: false
+
+export TSEBRA_PATH=/home/yagoi/bin/TSEBRA/ # Se puede sustituir /home/yagoi por ~
+export MINIPROTHINT_PATH=/home/yagoi/bin/miniprothint/ # Se puede sustituir /home/yagoi por ~
+
+galba.pl --species="Arabidopsis thaliana" \
+         --genome=At4.soft.fa \
+         --prot_seq=proteinas.fasta
+```
+
+## Ejercicio 5
+Échales un vistazo a los archivos de salida de GALBA y trata de sacar algo en claro.
+```{bash}
+head -n 10 GALBA/galba.gtf # Una tabla con coordenadas de los genes, de que herramienta vienen (AUGUSTUS en este caso), el tipo de estructura (gen, transcrito, codon de stop, etc), su id...
+```
+
+```{bash}
+head -n 10 GALBA/galba.aa # Un archivo tipo FASTA que contiene las secuencias de aminoacidos (las proteinas) de los genes que se han predicho
+```
+
+```{bash}
+head -n 10 GALBA/galba.codingseq # Otro archivo FASTA que contiene las secuencias de los genes pero en NUCLEOTIDOS
+```
+
+**El GALBA.log deja constancia de todo lo que ha hecho el programa galba, además añade una marca de tiempo que permite conocer cuanto tiempo ha tardado cada cosa** 
