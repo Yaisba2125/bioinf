@@ -1,0 +1,300 @@
+---
+title: "Práctia 12. Expresión Génica"
+lang: es
+date: today
+execute: 
+  output: true
+  error: true
+engine: knitr
+bibliography: ../../doc/references.bib
+language:
+   title-block-published: "Última actualización:"
+   section-title-references: "Bibliografía"
+format:
+   html:
+      embed-resources: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Dependencias de la Práctica:
+
+Para instalar el paquete DESeq2:
+
+```{r}
+#| eval: false
+
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("DESeq2")
+library(DESeq2)
+```
+
+Para descargar los datos necesarios para la práctica, se descargan
+unicamente si no existen esos archivos en la carpeta correspondiente
+(data):
+
+```{bash}
+if [ ! -e ../../data/salmon.merged.gene_counts.tsv ]; then
+  wget -P ../../data/ https://informatics.fas.harvard.edu/resources/tutorials/data/salmon.merged.gene_counts.tsv
+fi
+
+if [ ! -e ../../data/dme_elev_samples.tsv ]; then
+  wget -P ../../data/ https://informatics.fas.harvard.edu/resources/tutorials/data/dme_elev_samples.tsv
+fi
+```
+
+# Exploración de datos:
+
+```{r}
+muestras <- read.table('../../data/dme_elev_samples.tsv', header = TRUE)
+genex <- read.table('../../data/salmon.merged.gene_counts.tsv',
+                    header = TRUE)
+```
+
+## Ejercicio 1 sobre exploración de datos:
+
+::::::: {.callout-note icon="false" title="Ejercicio 1"}
+**Recuerda dejar constancia en un bloque de código de cómo obtienes las
+respuestas.**
+
+**Usa la función paste() para añadir una columna a muestras que contenga
+la población y la temperatura unidas por "\_"**
+
+::: {.callout-important icon="false" title="Respuesta"}
+```{r}
+muestras$pop_temp <- paste(muestras$population, muestras$temp, sep = "_")
+```
+
+Para añadir una nueva columna utilizamos el objeto ya creado (la matriz)
+seguido del \$ con el nombre de la nueva columna, paste sirve para unir
+el interior de dos columnas en una matriz y usar un separador
+personalizado
+:::
+
+**¿Cuál es el número total de lecturas por muestra?**
+
+::: {.callout-important icon="false" title="Respuesta"}
+Hay que recoger los nombres de las muestras en la matriz de muestras y contar las filas que tienen las columnas con esos nombres y sumar sus numeros de lecturas para cada muestra
+
+```{r}
+colSums(genex[, muestras$sample])
+```
+:::
+
+**¿Los recuentos tienen distribuciones parecidas entre muestras?**
+
+::: {.callout-important icon="false" title="Respuesta"}
+He utilizado escala logaritmica en el plot porque sino no se puede
+apreciar facilmente
+
+```{r}
+boxplot(log2(genex[, muestras$sample] + 1), 
+        main = "Distribución de los recuentos por muestra",
+        ylab = "log2(counts) + 1", 
+        las = 2, col = "red") # las es para que los nombres de las muestras se vean ordenados
+```
+:::
+
+**¿Cuántos genes no se expresan en absoluto en ninguna de las
+muestras?**
+
+::: {.callout-important icon="false" title="Respuesta"}
+```{r}
+sum(rowSums(genex[, muestras$sample]) == 0)
+```
+
+Parecido a la pregunta de las lecturas por muestra pero observamos el numero de filas cuyas sumas dan 0
+:::
+:::::::
+
+# Crear el objeto de clase DESeqDataSet:
+
+Realizamos un ordenamiento de las matrices para que las filas de "muestras" estén en orden con las columnas de "genex"
+
+```{r}
+suppressMessages(library('DESeq2'))
+all(names(genex)[3:14] == muestras$sample)
+```
+
+Necesitamos que la matriz de muestras tenga factores con valores, no cadenas de letras, además la columna de muestras la transformamos en el nombre de cada fila:
+```{r}
+# Pasamos la columna "sample" a nombres de fila:
+row.names(muestras) <- muestras$sample
+# Eliminamos la columna "sample":
+muestras$sample <- NULL
+# Y convertimos "population" y "temp" en factores:
+muestras$population <- factor(muestras$population,
+                              levels = c('maine', 'panama'))
+muestras$temp       <- factor(muestras$temp,
+                              levels = c('low', 'high'))
+muestras
+```
+
+Los datos de recuento deben ser números enteros y en forma de matriz
+```{r}
+row.names(genex) <- genex$gene_name
+genex$gene_name <- NULL
+genex$gene_id   <- NULL
+genex <- round(as.matrix(genex))
+```
+
+Ahora ya por fin se puede crear el *DESeqDataSet*:
+```{r}
+dds1 <- DESeqDataSetFromMatrix(
+   countData = genex,
+   colData = muestras,
+   design = ~ population + temp
+)
+dds1
+```
+
+# Pre-Filtrado
+
+Puede no ser necesario, pero por si acaso y para liberar memoria:
+```{r}
+keep <- rowSums(counts(dds1)) > 0
+dds1 <- dds1[keep, ]
+```
+
+# Expresión diferencial:
+
+Ya podemos usar **DESeq2**, que crea un **DESeqDataSet** a partir del que hemos creado:
+```{r}
+dds1 <- DESeq(dds1)
+```
+
+Por defecto, la función **results()** produce la tabla de resultados para el contraste entre el nivel último y el de referencia del último factor en la tabla que describe las muestras. En este caso, el factor es **temp**, el nivel de referencia es **low** y el otro nivel es **high**. Por tanto, los valores de log2FoldChange representan el logaritmo en base 2 de la relación entre niveles de expresión en muestras high respecto de muestras low
+```{r}
+res <- results(dds1)
+res
+```
+
+## Ejercicio 2 "results()":
+
+:::: {.callout-note icon="false" title="Ejercicio 2"}
+**Mira la ayuda de results() y genera también la tabla de resultados para el contraste entre las dos regiones de procedencia de las moscas.**
+
+::: {.callout-important icon="false" title="Respuesta"}
+```{r}
+#| eval: false
+
+? results()
+```
+
+Se puede usar el argumento **contrast** usando un nivel de referencia y otro "test" (denominador y numerador del fold change)
+```{r}
+res_contrast <- results(dds1, contrast = c("population", "panama", "maine"))
+res_contrast
+```
+:::
+
+**Usa summary() sobre los resultados para ver el número de genes diferencialmente expresados entre cada par de condiciones.**
+
+::: {.callout-important icon="false" title="Respuesta"}
+Sobre el original:
+```{r}
+summary(res)
+```
+
+Sobre el nuevo, de contraste:
+```{r}
+summary(res_contrast)
+```
+Los valores de LFC hacen referencia al grupo **test**, los up es que tienen mayor expresión que el de referencia, y los down tienen menor
+:::
+
+**¿Cuál es la tasa de falsos positivos (FDR)?**
+
+::: {.callout-important icon="false" title="Respuesta"}
+El valor que controla la tasa de falsos positivos es el p-valor, en este caso se puede ver en los dos resultados anteriores que es < 0.1
+:::
+
+::::
+
+# Graficas
+
+```{r}
+plotMA(res)
+```
+Los genes con niveles de expresión más bajos producen resultados más ruidosos (la varianza es mayor). La función **lfcShrink()** contrae (shrink) las estimaciones de los efectos (log fold change) para reducir el ruido y hacer el resultado más realista:
+```{r}
+resShrink <- lfcShrink(dds1, coef = 'temp_high_vs_low',
+                       type = 'normal')
+plotMA(resShrink)
+```
+
+
+## Ejercicio 4 VolcanoPlot:
+
+::: {.callout-note icon="false" title="Ejercicio 4"}
+**¿Sabrías hacer una gráfica volcán?**
+
+::: {.callout-important icon="false" title="Respuesta"}
+```{r}
+# 1. Crear el gráfico base
+# Usamos -log10 del p-valor para que los genes más significativos estén arriba
+plot(res$log2FoldChange, -log10(res$padj), 
+     pch = 20, main = "Volcano Plot: High vs Low temp", #pch para poner un circulo bonito
+     xlab = "log2 Fold Change", ylab = "-log10(P-adj)",
+     col = "grey") #los ejes no interesantes de gris
+
+# 2. Resaltar genes significativos
+# Genes con p-adj < 0.01 y |LFC| > 1, valores estándar
+with(subset(res, padj < 0.01 & abs(log2FoldChange) > 1), #subset filtra la tabla con los estadisticos que le marcas
+     points(log2FoldChange, -log10(padj), pch = 20, col = "red2")) # points dibuja encima del plot que ya existe y pone en rojo lo que hemos elegido como significativo
+
+# 3. Añadir líneas de umbral
+abline(h = -log10(0.01), col = "black", lty = 2)
+abline(v = c(-1, 1), col = "black", lty = 2) # ambas funciones añaden unas lineas discontinuas que hacen el volcanoplot mas visual
+```
+:::
+:::
+
+# Extraer datos transformados
+
+Aunque los datos de entrada no deben estar normalizados y la función DESeq() ya tiene en cuenta las diferencias de tamaño de genoteca entre muestras y la relación entre media y varianza, puede ser útil disponer de los datos normalizados para representarlos gráficamente. Para ello podemos usar las funciones **vst()** y **assay()**:
+```{r}
+dds2 <- vst(dds1)
+NormCounts <- assay(dds2)
+```
+
+```{r}
+res <- res[! is.na(res$pvalue), ]
+res <- res[order(res$log2FoldChange),]
+heatmap(NormCounts[c(head(row.names(res), 100),
+                     tail(row.names(res), 100)), ],
+        Rowv = NA, Colv = NA)
+```
+## Ejercicio 5 Heatmap:
+
+::: {.callout-note icon="false" title="Ejercicio 5"}
+**¿Podrías explicar qué hace el bloque de código anterior?**
+vst normaliza y transforma los datos a una escala logarítmica estabilizando la varianza y assay extrae la matriz de números ya transformados del objeto para que podamos trabajar con ella.
+
+!is.na(res$pvalue) filtra y elimina los genes que tienen un valor de p como NA
+
+order(res$log2FoldChange) reordena toda la tabla de resultados de menor a mayor según el log2FoldChange
+
+Por ultimo se crea un HEATMAP con los datos procesados
+
+::: {.callout-note icon="false" title="Respuesta"}
+
+
+:::
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+

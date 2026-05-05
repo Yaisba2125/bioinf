@@ -1,8 +1,7 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
+¡Bienvenido a mi repositorio de GitHub! Aqui guardo todo mi cuaderno de
+Bioinformática para que quede constancia de él, y que cualquiera pueda
+acceder a estos conocimientos, en este README he intent ado describir lo
+que se ha hecho en cada práctica.
 
 # PRÁCTICA 1 29-01-2026
 
@@ -108,4 +107,21 @@ valor, que serán dataframes con los datos solo de ese valor, en ellos
 podemos escoger los valores que se repiten continuamente en las filas y
 eliminarlos.
 
-## README en construcción, no se ha continuado con las demás prácticas
+# PRÁCTICA 5 24-02-2026
+
+# PRÁCTICA 6 03-03-2026
+
+# PRÁCTICA 7 10-03-2026
+
+# PRÁCTICA 8 24-03-2026
+
+# PRÁCTICA 9 31-03-2026
+
+# PRÁCTICA 10 21-04-2026
+
+# PRÁCTICA 11 28-04-2026
+
+# PRÁCTICA 12 05-05-2026
+
+
+## README en construcción, no se ha continuado con la descripción de las demás prácticas
