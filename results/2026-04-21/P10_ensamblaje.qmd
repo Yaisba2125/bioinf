@@ -1,5 +1,5 @@
 ---
-title: "P10_ensamblaje"
+title: "Práctica 10. Ensamblaje de genomas"
 lang: es
 date: today
 execute: 
