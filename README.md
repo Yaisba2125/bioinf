@@ -1,6 +1,6 @@
 ¡Bienvenido a mi repositorio de GitHub! Aqui guardo todo mi cuaderno de
 Bioinformática para que quede constancia de él, y que cualquiera pueda
-acceder a estos conocimientos, en este README he intent ado describir lo
+acceder a estos conocimientos, en este README he intentado describir lo
 que se ha hecho en cada práctica.
 
 # PRÁCTICA 1 29-01-2026

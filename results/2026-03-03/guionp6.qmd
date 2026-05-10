@@ -1,9 +1,9 @@
 ---
-title: "Búsquedas programáticas en Interpro"
+title: "Practica 6. Búsquedas programáticas en Interpro"
 lang: es
 date: today
 execute: 
-  output: false
+  output: true
   error: true
 engine: knitr
 bibliography: ../../doc/references.bib
@@ -107,16 +107,13 @@ registros <- fromJSON(paste0(API, 'entry'))
 registros[[1]][['member_databases']]
 ```
 
-::: {.callout-note icon="false"}
-## Ejercicio 1
-
+:::{.callout-note icon=false title="Ejercicio 1"}
 Construye las URLs necesarias para determinar el número de registros del
 resto de tipos: *protein*, *structure*, *set*, y *proteome*. Fíjate en
 las posibles fuentes de cada tipo de datos, e intenta guardar la
 información en variables de tu sesión de R.
 
-**MI EJERCICIO 1**, los comandos están ordenados por tipos
-
+:::{.callout-important icon=false title="Respuesta"}
 ```{r}
 # Proteinas
 'https://www.ebi.ac.uk/interpro/api/protein'
@@ -138,6 +135,7 @@ set[[1]]
 proteome <- fromJSON(paste0(API,'proteome'))
 proteome[[1]]
 ```
+:::
 :::
 
 # Lista de datos de algún tipo
@@ -181,18 +179,17 @@ pfam02 <- fromJSON(pfam01[['next']])
 kable(pfam02[['results']][['metadata']]) %>% kable_styling()
 ```
 
-::: {.callout-note icon="false"}
-## Ejercicio 2
-
+:::{.callout-note icon=false title="Ejercicio 2"}
 Crea una tercera lista con los contenidos de la tercera página de
 registros de Pfam.
 
-**MI EJERCICIO 2** Hacemos una lista con el URL del next de pfam02
-
+:::{.callout-important icon=false title="Respuesta"}
+Hacemos una lista con el URL del next de pfam02
 ```{r}
 pfam03 <- fromJSON(pfam02[['next']])
 kable(pfam03[['results']][['metadata']]) %>% kable_styling()
 ```
+:::
 :::
 
 # Unión de *páginas* en un mismo *data frame*
@@ -235,22 +232,20 @@ nombre_largo <- pf06235[['metadata']][['name']][['name']]
 nombre_largo
 ```
 
-::: {.callout-note icon="false"}
-## Ejercicio 3
-
+:::{.callout-note icon=false title="Ejercicio 3"}
 Usa la función `fromJSON()` para guardar la información del registro
 P01923 (proteína de Swiss-Prot) y explora la estructura de los datos con
 la función `str()`. ¿Puedes extraer la secuencia?
 
-**MI EJERCICIO 3** exploramos la estructura de P01923 (en
-protein/reviewed)para observar que la secuencia está dentro de metadata
-
+:::{.callout-important icon=false title="Respuesta"}
+Exploramos la estructura de P01923 (en protein/reviewed) para observar que la secuencia está dentro de metadata
 ```{r}
 p01923 <- fromJSON(paste0(API, 'protein/reviewed/P01923'))
 str(p01923)
 secuencia <- p01923[['metadata']][['sequence']]
 secuencia
 ```
+:::
 :::
 
 # Filtros. Cruzar dos tipos de datos
@@ -273,16 +268,13 @@ información sobre el segundo. Por ejemplo, al comparar estas 2 URLs:
 podemos observar que no en todas las proteínas en UniProtKB se encuentra
 algún dominio o elemento funcional en InterPro.
 
-::: {.callout-note icon="false"}
-## Ejercicio 4
-
+:::{.callout-note icon=false title="Ejercicio 4"}
 Determina cuántos taxones de UniProtKB no tienen ninguna proteína
 asignada. ¿Y qué proporción de proteínas cuentan con una estructura
 terciaria?
 
-**MI EJERCICIO 4** Para los taxones sin proteina cargamos en objetos el
-numero total de taxones y el numero de taxones con proteina y hacemos la
-resta
+:::{.callout-important icon=false title="Respuesta"}
+Para los taxones sin proteina cargamos en objetos el numero total de taxones y el numero de taxones con proteina y hacemos la resta
 
 ```{r}
 tax <- fromJSON(paste0(API,'taxonomy/uniprot'))
@@ -304,6 +296,7 @@ numprot3d <- prot3d[['count']]
 prop3dprot <- numprot3d / numprot * 100
 print(prop3dprot)
 ```
+:::
 :::
 
 # Filtros. Subconjunto de registros
@@ -330,23 +323,32 @@ kable(flatten(pfam00019[['results']][['metadata']])) %>%
    kable_styling()
 ```
 
-::: {.callout-note icon="false"}
-## Ejercicio 5
-
+:::{.callout-note icon=false title="Ejercicio 5"}
 Intenta obtener una lista de los dominios de Pfam presentes en
 vertebrados (taxon 7742). Al menos, los 20 primeros.
 
-**MI EJERCICIO**
+:::{.callout-important icon=false title="Respuesta"}
 ```{r}
 vertebrate <- fromJSON(paste0(API,'entry/pfam/taxonomy/uniprot/7742'))
-
+kable(vertebrate[['results']][['metadata']]) %>% kable_styling()
 ```
-**NO HE PODIDO ACABARLO, HASTA AQUI**
+:::
+:::
 
-## Ejercicio 6
+:::{.callout-note icon=false title="Ejercicio 6"}
 
 ¿Cuántas proteínas de cocodrilos (taxon 8493) conocemos con el dominio
 *zinc finger, C2HC type* (Pfam PF01530)?
+
+:::{.callout-important icon=false title="Respuesta"}
+```{r}
+# Construir la URL para el cruce de datos
+URL_crocs <- paste0(API, 'protein/uniprot/entry/pfam/PF01530/taxonomy/uniprot/8493')
+crocs_zinc_finger <- fromJSON(URL_crocs) # Descarga la URL en un objeto
+num_proteinas <- crocs_zinc_finger[['count']] #Lee el numero de proteinas
+num_proteinas
+``` 
+:::
 :::
 
 # Apéndice. Cómo juntar todas las páginas que genera la API de Interpro
@@ -427,10 +429,13 @@ kable(equinodermata[equinodermata$accession %in% SoloEquinodermos,
               c('accession', 'name')]) %>% kable_styling()
 ```
 
-# Bibliografía
-
 # Información sobre la sesión
 
 ```{r}
+#| output: false
+
 sessionInfo()
 ```
+
+# Bibliografía
+

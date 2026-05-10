@@ -271,6 +271,8 @@ heatmap(NormCounts[c(head(row.names(res), 100),
 
 ::: {.callout-note icon="false" title="Ejercicio 5"}
 **¿Podrías explicar qué hace el bloque de código anterior?**
+
+::: {.callout-important icon="false" title="Respuesta"}
 vst normaliza y transforma los datos a una escala logarítmica estabilizando la varianza y assay extrae la matriz de números ya transformados del objeto para que podamos trabajar con ella.
 
 !is.na(res$pvalue) filtra y elimina los genes que tienen un valor de p como NA
@@ -278,9 +280,6 @@ vst normaliza y transforma los datos a una escala logarítmica estabilizando la 
 order(res$log2FoldChange) reordena toda la tabla de resultados de menor a mayor según el log2FoldChange
 
 Por ultimo se crea un HEATMAP con los datos procesados
-
-::: {.callout-note icon="false" title="Respuesta"}
-
 
 :::
 :::

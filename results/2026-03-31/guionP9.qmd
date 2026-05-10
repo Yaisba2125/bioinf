@@ -1,5 +1,5 @@
 ---
-title: "guionP9"
+title: "Práctica 9. Reconstrucción filogenética"
 lang: es
 date: today
 execute: 
@@ -20,28 +20,54 @@ editor:
 
 # Instalación de paquetes y preparación
 
+Este chunk no se compila, es solo para saber como se instala el paquete
 ```{r}
+#| eval: false
+
 install.packages('phangorn')
+```
+  
+Después de descargar el archivo con cromosomas mitocondriales de diferentes especies cercanas al ser humano podemos correr el siguiente bloque para tratar los datos y visualizarlos un poco:
+```{r}
 library(phangorn)
+
 mtdna <- read.phyDat('../../data/mtDNA.fasta', format = 'fasta')
 glance(mtdna)
 image(mtdna)
 ```
+Después de ejecutar el bloque anterior, habrás cargado los datos en el objeto de clase `phyDat` llamado mtdna. Puedes usar la consola de R para echarle un vistazo, por ejemplo con la función `glance()` o incluso para generar una imagen del alineamiento con `image()`. Si tienes instalado el paquete `Biostrings` (de Bioconductor), puedes crear un objeto de classe DNAStringSet con `as.StringSet(mtDNA)`, al que se le pueden aplicar muchas otras funciones. Pero no es necesario.
 
-## Ejercicio 1
+:::{.callout-note icon=false title="Ejercicio 1"}
+**¿Puedes confirmar el número de secuencias?**
 
-¿Puedes confirmar el número de secuencias? ¿Qué longitud tiene el
-alineamiento? ¿Qué función usarías para extraer los nombres de las
-secuencias?
-
+:::{.callout-important icon=false title="Respuesta"}
 ```{r}
 length(mtdna) #Para ver el numero de secuencias diferentes que hay
-print(mtdna) #Devuelve que tiene 42 secuencias con 16603 caracteres, este último es la longitud del alineamiento
-names(mtdna) #Devuelve los nombres de todas las secuencias 
-
 ```
+:::
+
+**¿Qué longitud tiene el alineamiento?**
+
+:::{.callout-important icon=false title="Respuesta"}
+```{r}
+print(mtdna) #Devuelve que tiene 42 secuencias con 16603 caracteres, este último es la longitud del alineamiento
+```
+:::
+
+**¿Qué función usarías para extraer los nombres de las secuencias?**
+
+:::{.callout-important icon=false title="Respuesta"}
+```{r}
+names(mtdna) #Devuelve los nombres de todas las secuencias 
+```
+:::
+:::
 
 # Árboles basados en distancias
+
+Los árboles **NJ** y **UPGMA** pueden proporcionar una idea rápida de cómo podría ser la relación filogenética entre las secuencias. Son árboles basados en distancias por lo que hay que calcular la distancia antes de construir el árbol, se puede hacer en la misma línea de código o uno detrás de otro, creando un objeto "distancias" y construir el árbol con ese objeto
+
+Los métodos NJ y UPGMA son sólo heurísticos rápidos, con los que no hace falta usar distancias de alta precisión.
 
 ```{r}
 distancias <- dist.ml(mtdna)
@@ -50,36 +76,44 @@ mt_upgma <- upgma(distancias)
 
 ```
 
-## Ejercicio 2
+:::{.callout-note icon=false title="Ejercicio 2"}
+1. ¿De qué clase son los objetos mt_nj y mt_upgma? 
+2. Consulta la estructura de estos objetos (str(mt_nj)). 
+3. Represéntalos gráficamente (plot(mt_nj))y consulta la ayuda de la función plot.phylo() para saber qué opciones de representación gráfica tienes. 
+4. Para qué sirven las funciones add.scale.bar() y axisPhylo()?
 
-¿De qué clase son los objetos mt_nj y mt_upgma? Consulta la estructura
-de estos objetos (str(mt_nj)). Represéntalos gráficamente (plot(mt_nj))
-y consulta la ayuda de la función plot.phylo() para saber qué opciones
-de representación gráfica tienes. Para qué sirven las funciones
-add.scale.bar() y axisPhylo()?
-
+:::{.callout-important icon=false title="Respuesta"}
 ```{r}
 #| fig-width: 15
 #| fig-height: 10
 
-class(mt_nj) # Son de clase phylo
+# 1. Son de clase phylo
+class(mt_nj) 
+
+# 2.
 str(mt_nj) 
 
+# 3. Dibuja una barra que sirve de escala visual
 plot(mt_nj)
 nodelabels()
-add.scale.bar(x = 0, y = 0) # Dibuja una barra que sirve de escala visual
+
+# 4. Añade una escala numérica que se podrá usar para referenciar el tiempo
+add.scale.bar(x = 0, y = 0)  
 
 class(mt_upgma)
 str(mt_upgma)
 
 plot(mt_upgma)
-axisPhylo() # Añade un eje X numerico, supongo que se podrá usar para referenciar el tiempo
+axisPhylo() 
 ```
+:::
+:::
 
 # Enraizar
 
-Escogiendo el nodo concreto mediante ID:
+El árbol `mt_nj` no está enraizado (puedes comprobarlo con `is.rooted()`). Tenemos un par de opciones para enraizarlo. Una opción es `root()`, función en la que debemos especificar o bien el outgroup o bien el nodo interno en el que queremos situar la raíz. Para saber cómo identificar los nodos internos, puedes invocar `nodelabels()` después de haber usado `plot(mt_nj)` (Hecho arriba). Por ejemplo, en mi caso, el nodo 75 parece ser el ancestro entre gorilas y chimpancés, y por tanto también es ancestro de los humanos.
 
+**Según el ID del nodo:**
 ```{r}
 #| fig-width: 15
 #| fig-height: 9
@@ -88,8 +122,9 @@ mt_nj_rooted <- root(mt_nj, node = 75)
 plot(mt_nj_rooted)
 ```
 
-Escogiendo el outgroup mediante su nombre:
+La numeración de los nodos internos siempre sigue a la de las hojas (o puntas) del árbol. El orden es caprichoso y después de enraizar, lo que era el 75 en mt_nj ahora será el 43 en mt_nj_rooted. Para garantizar que el enraizado no depende de la numeración, es más seguro usar el nombre del outgroup:
 
+**Escogiendo el outgroup mediante su nombre:**
 ```{r}
 #| fig-width: 15
 #| fig-height: 9
@@ -99,9 +134,10 @@ mt_nj_rooted2 <- root(mt_nj, outgroup = 'G.gorilla_D38114')
 plot(mt_nj_rooted2)
 ```
 
-Para escoger un punto medio que haga que el arbol pareza mas
-ultramérico:
+Al representar el árbol enraizado (plot(mt_nj_rooted)) verás que no todas las hojas del árbol están a la misma altura. El punto exacto en el que se sitúa la raíz en una rama es arbitrario y root() no se esfuerza mucho en intentar que el árbol parezca ultramétrico. La otra opción es la función `midpoint()`, que escoge la posición de la raíz para que el árbol esté más equilibrado:
 
+**Para escoger un punto medio que haga que el arbol parezca mas
+ultramétrico:**
 ```{r}
 #| fig-width: 15
 #| fig-height: 10
@@ -111,7 +147,11 @@ nodelabels(frame = 'none')
 add.scale.bar()
 ```
 
-Con datación de hojas:
+El enraizado en punto medio asume que todas las hojas son contemporáneas, como sucede en muchos casos. Pero, en nuestros datos tenemos secuencias contemporáneas y también arcaicas. En el apéndice encontrarás referencias sobre las edades estimadas de esas secuencias. Conociendo estas edades, podemos aplicar un método de enraizado llamado root-to-tip regression, mediante la función `rtt()` de ape.
+
+Lo primero es crear un vector de fechas (o edades) para todas las hojas del árbol. Podemos expressar las edades de las secuencias arcaicas como el número (negativo) de años que hace que dejaron de evolucionar. Para saber el orden en que debemos especificar las edades, podemos usar `mt_nj$tip.label.`
+
+**Con datación de hojas:**
 ```{r}
 #| fig-width: 15
 #| fig-height: 10
@@ -125,19 +165,39 @@ fechas <- c(0, 0, 0, 0, 0, 0, 0, 0, 0,
 # Observa que hay que asignar el resultado de setNames() a "fechas"
 fechas <- setNames(fechas, mt_nj$tip.label)
 fechas
+```
+
+```{r}
 mt_nj_rtt <- rtt(mt_nj, tip.dates = fechas, objective = 'rms')
 plot(mt_nj_rtt)
 add.scale.bar()
-
 ```
-## Ejercicio 3
-¿Se corresponden bien las distancias evolutivas estimadas con las dataciones? **No exactamente**
-¿Qué secuencias crees que se ajustan menos a su supuesta edad? **El homo heidelbergensis.**
-¿Qué razones puede haber para que la edad de una secuencia no se corresponda con la cantidad de cambios que ha acumulado? **Que la tasa de mutaciones no sea igual en todas las especies, daños en las secuencias mas antiguas...**
+
+:::{.callout-note icon=false title="Ejercicio 3"}
+**¿Se corresponden bien las distancias evolutivas estimadas con las dataciones?** 
+
+:::{.callout-important icon=false title="Respuesta"}
+No exactamente
+:::
+
+**¿Qué secuencias crees que se ajustan menos a su supuesta edad?**
+
+:::{.callout-important icon=false title="Respuesta"}
+El homo heidelbergensis
+:::
+
+**¿Qué razones puede haber para que la edad de una secuencia no se corresponda con la cantidad de cambios que ha acumulado?** 
+
+:::{.callout-important icon=false title="Respuesta"}
+Que la tasa de mutaciones no sea igual en todas las especies, daños en las secuencias mas antiguas...
+:::
+:::
 
 # Distancias
+Si has creado el objeto `distancias` antes, puedes usarlo para conocer la cantidad estimada de cambios entre los cromosomas mitocondriales humanos y de neandertales, por ejemplo. El objeto de clase dist es incómodo, pero podemos obtener una simple matriz fácilmente:
 ```{r}
 distMat <- as.matrix(distancias)
+
 # Esto son vectores lógicos que podemos usar después para seleccionar filas
 # y columnas de la matriz de distancias.
 modernos     <- startsWith(colnames(distMat), 'H.s.modern')
@@ -145,45 +205,83 @@ neandertales <- startsWith(colnames(distMat), 'H.s.neandertal')
 denisovanos  <- startsWith(colnames(distMat), 'H.s.denisova')
 chimpances   <- startsWith(colnames(distMat), 'P.troglodytes')
 bonobos      <- startsWith(colnames(distMat), 'P.paniscus')
+
+# La distancia estimada media entre humanos y neandertales se puede obtener como:
 mean(distMat[modernos, neandertales])
 ```
-## Ejercicio 4 
-Calcula las distancias medias entre todos los grupos.
-¿Cuántas veces mayor es la distancia entre humanos y chimpancés que entre humanos y neandertales?
-¿Cómo calcularías la distancia media entre dos secuencias de humanos modernos?
-```{r}
-dist_hum_nean <- mean(distMat[modernos, neandertales])
-mean(distMat[modernos, denisovanos])
-dist_hum_chimp <- mean(distMat[modernos, chimpances])
-mean(distMat[modernos, bonobos])
-proporcion_humchimp_humnean <- dist_hum_chimp / dist_hum_nean
 
+:::{.callout-note icon=false title="Ejercicio 4"}
+**Calcula las distancias medias entre todos los grupos.**
+
+:::{.callout-important icon=false title="Respuesta"}
+**Modernos con los demás**
+```{r}
+mean(distMat[modernos, neandertales])
+mean(distMat[modernos, denisovanos])
+mean(distMat[modernos, chimpances])
+mean(distMat[modernos, bonobos])
+```
+
+**Neandertales con los demás (menos modernos)**
+```{r}
 mean(distMat[neandertales, denisovanos])
 mean(distMat[neandertales, chimpances])
 mean(distMat[neandertales, bonobos])
+```
 
+**Denisovanos con los demás (menos modernos y neandertales)**
+```{r}
 mean(distMat[denisovanos, chimpances])
 mean(distMat[denisovanos, bonobos])
+```
 
+**Chimpances con bonobos**
+```{r}
 mean(distMat[chimpances, bonobos])
+```
+:::
 
-# La función lower.tri() permite escoger solamente los valores del triangulo inferior de la matriz, por lo que solo se comparan entre humanos 1 vez y tampoco hay 0s
+**¿Cuántas veces mayor es la distancia entre humanos y chimpancés que entre humanos y neandertales?**
+
+:::{.callout-important icon=false title="Respuesta"}
+```{r}
+dist_hum_nean <- mean(distMat[modernos, neandertales])
+dist_hum_chimp <- mean(distMat[modernos, chimpances])
+proporcion_humchimp_humnean <- dist_hum_chimp / dist_hum_nean
+proporcion_humchimp_humnean
+```
+:::
+
+**¿Cómo calcularías la distancia media entre dos secuencias de humanos modernos?**
+
+:::{.callout-important icon=false title="Respuesta"}
+```{r}
+# La función lower.tri() permite escoger solamente los valores del triangulo inferior de la matriz (ya que en el medio son todo valores = 0), por lo que solo se comparan entre humanos 1 vez (no se calcula la distancia consigo misma)
 matriz_modernos <- distMat[modernos, modernos]
 distancias_reales <- matriz_modernos[lower.tri(matriz_modernos)]
 mean(distancias_reales)
-
 ```
+:::
+:::
 
-## Ejercicio 5:
+Las distancias estimadas no son exactas. Cuanto mayor es la distancia, mayor es el error en la estimación, pero nos ayudan a estimar el tiempo transcurrido desde que dos linajes se separaron.
+
+En los árboles las distancias se representan mediante la suma de las longitudes que separan las hojas. Las podemos obtener con la función `cophenetic()`:
+
 ```{r}
 distCofen <- cophenetic(mt_nj_rooted)
-
 ```
-¿Cuánto se parecen las distancias estimadas a las distancias cofenéticas?
 
+:::{.callout-note icon=false title="Ejercicio 5"}
+**¿Cuánto se parecen las distancias estimadas a las distancias cofenéticas?**
+
+:::{.callout-important icon=false title="Respuesta"}
+Podemos plotear una matriz que tenga en el EJE X una de las matrices y en el EJE Y la otra, si sale una recta x = y es que son iguales las dos distancias (mas o menos)
 ```{r}
-# Podemos plotear una matriz que tenga el EJEX una de las matrices y en el EJEY la otra, si sale una recta x = y es que son iguales las dos distancias (mas o menos)
 plot(distMat, distCofen, xlab = 'Distancias matriz NJ', ylab = 'Distancias cofenéticas')
 abline(a = 0, b = 1, col = 'blue', lty = 2)
 ```
+:::
+:::
 
+# **Hasta aquí dió tiempo a hacer en el aula**

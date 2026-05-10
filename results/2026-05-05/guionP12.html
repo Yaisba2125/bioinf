@@ -3623,11 +3623,8 @@ Ejercicio 5
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>¿Podrías explicar qué hace el bloque de código anterior?</strong> vst normaliza y transforma los datos a una escala logarítmica estabilizando la varianza y assay extrae la matriz de números ya transformados del objeto para que podamos trabajar con ella.</p>
-<p>!is.na(res$pvalue) filtra y elimina los genes que tienen un valor de p como NA</p>
-<p>order(res$log2FoldChange) reordena toda la tabla de resultados de menor a mayor según el log2FoldChange</p>
-<p>Por ultimo se crea un HEATMAP con los datos procesados</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Respuesta">
+<p><strong>¿Podrías explicar qué hace el bloque de código anterior?</strong></p>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Respuesta">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -3637,7 +3634,10 @@ Respuesta
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>vst normaliza y transforma los datos a una escala logarítmica estabilizando la varianza y assay extrae la matriz de números ya transformados del objeto para que podamos trabajar con ella.</p>
+<p>!is.na(res$pvalue) filtra y elimina los genes que tienen un valor de p como NA</p>
+<p>order(res$log2FoldChange) reordena toda la tabla de resultados de menor a mayor según el log2FoldChange</p>
+<p>Por ultimo se crea un HEATMAP con los datos procesados</p>
 </div>
 </div>
 </div>

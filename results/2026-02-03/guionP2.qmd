@@ -1,5 +1,5 @@
 ---
-title: "Control de versiones con Git"
+title: "Práctica 2. Control de versiones con Git"
 lang: es
 date: today
 execute: 
@@ -215,5 +215,8 @@ la contraseña con la que has protegido la llave privada. Se le puede decir al
 ordenador que recuerde la contraseña y no te la pida cada vez, pero este guión
 no da para más.
 
+::: {.callout-important icon="false" title="Resultado de la práctica"}
+
 # Repositorio propio
-Con estas instrucciones he podido crear el repositorio de github "bioinf" con mi usuario, Yaisba2125 (https://github.com/Yaisba2125/bioinf)
+Con estas instrucciones he podido crear el repositorio de github "bioinf" con mi usuario, [Yaisba2125](https://github.com/Yaisba2125/bioinf)
+:::

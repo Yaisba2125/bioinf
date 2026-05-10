@@ -1,5 +1,5 @@
 ---
-title: "Visualización y exploración de datos"
+title: "Práctica 7. Visualización y exploración de datos"
 lang: es
 date: today
 execute: 
@@ -70,13 +70,13 @@ gwas <- gwas[!is.na(gwas$P),]
 gwas$Q <- p.adjust(gwas$P, method = 'fdr')
 ```
 
-::: {.callout-note icon="false"}
-## Desafío
-
+::: {.callout-note icon="false" title="Desafío"}
 La orden `read.table('gwas.txt')` no da error, pero es errónea. ¿Puedes
-arreglarla? He añadido codigo que permite poner la primera fila como
-cabeceras de las columnas y eliminar esa primera fila, luego añadir 1
-columna que corresponde al valor ajustado de P.
+arreglarla? 
+
+::: {.callout-important icon="false" title="Respuesta"}
+He añadido codigo que permite poner la primera fila como cabeceras de las columnas y eliminar esa primera fila, luego añadir 1 columna que corresponde al valor ajustado de P.
+:::
 :::
 
 # Comprobar las suposiciones
@@ -95,34 +95,36 @@ ggplot(data = gwas,
    geom_abline(intercept = 0, slope = 1, color = 'red')
 ```
 
-::: {.callout-note icon="false"}
-## Desafío
-
+::: {.callout-note icon="false" title="Desafío"}
 Comprueba gráficamente las suposiciones siguientes. Esfuérzate por
 imaginar qué forma esperas que adopte la gráfica en cada caso antes de
 representarla. Si en algún caso encuentras una relación diferente a la
 esperada, trata de explicarte por qué.
 
-1.  El valor *p* sólo depende del estadístico *T*.
+**1.  El valor *p* sólo depende del estadístico *T*.**
 
+::: {.callout-important icon="false" title="Respuesta"}
 ```{r}
 ggplot(data = gwas, aes(y = P)) +
   geom_point(aes(x = T_STAT), color = "black")
 ```
+La gráfica muestra que cuanto más extremo es T mas pequeño y significativo es p
+:::
 
-2.  El alelo A1 es siempre el que tiene la frecuencia más baja, en estos
-    datos.
+**2.  El alelo A1 es siempre el que tiene la frecuencia más baja, en estos datos.**
 
+::: {.callout-important icon="false" title="Respuesta"}
 ```{r}
 ggplot(data = gwas, aes(x = A1_FREQ)) + 
   geom_histogram(bins = 50, fill = 'steelblue', color = 'black')
 ```
-
 Se puede ver que la frecuencia no pasa de 0'5, por lo que siempre es
 minoritario
+:::
 
-3.  El error estándar es menor cuanto mayor es el tamaño muestral.
+**3.  El error estándar es menor cuanto mayor es el tamaño muestral.**
 
+::: {.callout-important icon="false" title="Respuesta"}
 ```{r}
 ggplot(gwas, aes(x = OBS_CT, y = SE)) +
   stat_summary(fun = "mean", geom = "point", color = "red") +
@@ -131,13 +133,18 @@ ggplot(gwas, aes(x = OBS_CT, y = SE)) +
 ggplot(gwas, aes(x = factor(OBS_CT), y = SE)) +
   geom_violin()
 ```
+Se observa que el error estándar tiende a ser más bajo en los grupos con un tamaño muestral mayor
+:::
 
-4.  La distribución de valores *p* se hace uniforme hacia la derecha.
+**4.  La distribución de valores *p* se hace uniforme hacia la derecha.**
 
+::: {.callout-important icon="false" title="Respuesta"}
 ```{r}
 ggplot(data = gwas, aes(x = P)) + 
   geom_histogram(bins = 50, fill = 'steelblue', color = 'black')
 ```
+Se ve claramente la distribución uniforme (plana) a la derecha del gráfico
+:::
 :::
 
 # Agrupación de datos
@@ -170,13 +177,12 @@ ggplot(data = gwas,
    facet_wrap(~CHROM, scale = 'free')
 ```
 
-::: {.callout-note icon="false"}
-## Desafíos
-
-1.  Haz que no sólo las líneas, sino también los puntos tengan colores
+::: {.callout-note icon="false" title="Desafios"}
+**1.  Haz que no sólo las líneas, sino también los puntos tengan colores
     diferentes, que correspondan a los valores de OBS_CT, en la gráfica
-    donde has usado `geom_smooth()`.
-
+    donde has usado `geom_smooth()`.**
+    
+::: {.callout-important icon="false" title="Respuesta"}
 ```{r}
 #| warning: false
 #| message: false
@@ -185,10 +191,12 @@ ggplot(data = gwas,
    geom_point() +
    geom_smooth()
 ```
+:::
 
-2.  Añade una línea suavizada (`geom_smooth()`) a cada cromosoma en el
-    gráfico anterior.
+**2.  Añade una línea suavizada (`geom_smooth()`) a cada cromosoma en el
+    gráfico anterior.**
 
+::: {.callout-important icon="false" title="Respuesta"}
 ```{r}
 #| fig.width: 15
 #| fig.height: 15
@@ -201,16 +209,18 @@ ggplot(data = gwas,
   geom_smooth() +
   facet_wrap(~CHROM, scale = 'free')
 ```
+:::
 
-3.  ¿Cómo puedes deshacerte de los mensajes de `geom_smooth()`?
+**3.  ¿Cómo puedes deshacerte de los mensajes de `geom_smooth()`?**
 
-```{r}
-#| warning: false
-#| message: false
-```
+::: {.callout-important icon="false" title="Respuesta"}
+En un chunk de R poner al inicio esta configuración: #| warning: false #| message: false, una configuración en cada linea y separarlo del codigo real por una linea en blanco
+:::
 
-4.  ¿Para qué sirve la opción `scale = 'free'` en `facet_wrap()`?
+**4.  ¿Para qué sirve la opción `scale = 'free'` en `facet_wrap()`?**
 
+::: {.callout-important icon="false" title="Respuesta"}
+Cuando no hay escala libre es posible hacer comparaciones entre las gráficas, pero se aprovecha menos el espacio (los ejes de coordenadas), `scale = 'free'` permite que cada grafico se ajuste a su propio rango de datos
 ```{r}
 #| fig.width: 12
 #| fig.height: 12
@@ -222,9 +232,8 @@ ggplot(data = gwas,
   geom_point() +
   geom_smooth() +
   facet_wrap(~CHROM)
-# Cuando no hay escala libre es posible hacer comparaciones entre las gráficas,
-# pero se aprovecha menos el espacio (los ejes de coordenadas)
 ```
+:::
 :::
 
 # Agrupación de datos y estadísticos
@@ -264,9 +273,10 @@ ggplot(data = gwas, aes(x = OBS_CT, y = SE)) +
    theme_minimal()
 ```
 
-::: {.callout-note icon="false"}
-## Desafío
-1.  ¿Para qué sirve la opción `position = 'jitter'`?
+::: {.callout-note icon="false" title="Desafios"}
+**1.  ¿Para qué sirve la opción `position = 'jitter'`?**
+
+::: {.callout-important icon="false" title="Respuesta"}
 ```{r}
 ggplot(data = gwas, aes(x = OBS_CT, y = SE)) +
    stat_summary(geom = 'line', fun = 'mean', linewidth = 7, color = 'gray') +
@@ -275,26 +285,38 @@ ggplot(data = gwas, aes(x = OBS_CT, y = SE)) +
    theme_minimal()
 ```
 Sirve para no superponer los puntos unos encima de otros, pone un poco de ruido
+:::
 
-2.  ¿Por qué en la gráfica de violines teníamos que especificar
-    `group = 1` y en la siguiente no, al representar la línea?
+**2.  ¿Por qué en la gráfica de violines teníamos que especificar
+    `group = 1` y en la siguiente no, al representar la línea?**
+
+::: {.callout-important icon="false" title="Respuesta"}
 Porque solo quieres una línea para todos los valores de tamaño muestral, pero
 quieres un punto para cada valor de tamaño muestral. 
 Es para que forme una línea con todos las medias de cada valor de tamaño.
+:::
 
-3.  ¿Para qué sirve la función `factor()` al representar la gráfica de
-    violines?
+**3.  ¿Para qué sirve la función `factor()` al representar la gráfica de
+    violines?**
+
+::: {.callout-important icon="false" title="Respuesta"}
 Factor sirve para cambiar la variable de tamaño muestral de tipo continua a 
 una variable de tipo categórica, que nos permita agrupar los valores de error
 en los 7 tipos (valores) de tamaño muestral.
+:::
 
-4.  ¿Se te ocurre alguna otra manera de combinar datos y sus
+**4.  ¿Se te ocurre alguna otra manera de combinar datos y sus
     estadísticos (como la media) en un mismo gráfico, sin usar
-    `stat_summary()`? ¿Qué método te gusta más?
+    `stat_summary()`? ¿Qué método te gusta más?**
+
+::: {.callout-important icon="false" title="Respuesta"}
 Definir un marco de datos diferente con los estadisticos que se quieran para
 añadirselo al ggplot, es muy farragoso comparado con la funcion stat_sumary
 que te permite calcular todo de manera automática, sin tocar los datos tú.
 :::
+:::
+
+## **Hasta aqui me dio tiempo a hacer en el aula, los errores posteriores se deben a ello**
 
 # Barras
 

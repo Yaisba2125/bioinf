@@ -79,9 +79,7 @@ if [ ! -e ../../data/DRR025089_2.fastq.gz ]; then
 fi
 ```
 
-::: {.callout-note icon="false"}
-## Desafío
-
+::: {.callout-note icon="false" title="Desafío 1"}
 Una vez descargados los archivos FASTQ, échales un vistazo desde la
 línea de órdenes. Puedes hacerlo con `zless`, una versión de `less`
 capaz de mostrar archivos comprimidos, o bien descomprimiendo los
@@ -90,14 +88,16 @@ puedes usar `gunzip -c DRR025089_1.fastq.gz | less -S`, que envía el
 contenido del archivo a la salida estándar (no a un archivo nuevo), de
 donde `less -S` lo lee, sin modificar nada en la carpeta. ¿Sabrías
 contar el número de líneas de cada archivo?
-:::
 
+::: {.callout-important icon="false" title="Respuesta"}
 ```{bash}
 # gunzip -c ../../data/DRR025089_1.fastq.gz | less -S Lo comento porque es muy largo
 gunzip -c ../../data/DRR025089_1.fastq.gz | head
 gunzip -c ../../data/DRR025089_1.fastq.gz | wc -l 
 
 ```
+:::
+:::
 
 Necesitaremos también el genoma de referencia de
 `Bradyrhizobium japonicum`. Usaremos el de la cepa ACCC 15027 (hay
@@ -112,35 +112,39 @@ if [ ! -e ../../data/referencia.fa ]; then
 fi
 ```
 
-::: {.callout-note icon="false"}
-## Preguntas
-
+::: {.callout-note icon="false" title="Preguntas"}
 -   ¿Crees que deberíamos guardar los archivos descargados en
-    `../../data`? **En mi opinión sí, son archivos relativamente pesados
-    y son datos crudos, con ellos haremos lo que sea necesario para
-    procesarlos y esos resultados procesados los crearemos en
-    results/aaa-mm-dd**
+    `../../data`? 
 
--   ¿Cómo podrías guardar los mensajes de `wget` en un archivo? **Se
-    puede ver en su comando de help que si utilizamos el argumento "-o"
-    podemos guardar los mensajes que da en un archivo .log**
+::: {.callout-important icon="false" title="Respuesta"}
+En mi opinión sí, son archivos relativamente pesados y son datos crudos, con ellos haremos lo que sea necesario para procesarlos y esos resultados procesados los crearemos en results/aaa-mm-dd.
+:::
+
+-   ¿Cómo podrías guardar los mensajes de `wget` en un archivo? 
+
+::: {.callout-important icon="false" title="Respuesta"}
+Se puede ver en su comando de help que si utilizamos el argumento "-o" podemos guardar los mensajes que da en un archivo .log**
 
 ```{bash}
+#| eval: false
+
 wget -h
 wget -o descarga.log https://link-archivo.es
 
 ```
+:::
 
 -   ¿De cuántas secuencias diferentes se compone este genoma de
-    referencia? **Las secuencias en los archivos fasta siempre comienzan
-    por un \>, por lo que usando grep y filtrando por ese caracter
-    obtendremos el numero de filas que empiezan por ese caracter, es
-    decir, el numero de secuencias.**
+    referencia? 
+    
+::: {.callout-important icon="false" title="Respuesta"}
+Las secuencias en los archivos fasta siempre comienzan por un \>, por lo que usando grep y filtrando por ese caracter obtendremos el numero de filas que empiezan por ese caracter, es decir, el numero de secuencias.
 
 ```{bash}
 grep -c "^>" ../../data/referencia.fa
 
 ```
+:::
 :::
 
 # Control de calidad
@@ -158,36 +162,44 @@ if [ ! -e fastp.html ]; then
 fi
 ```
 
-::: {.callout-note icon="false"}
-## Ejercicios
-
+::: {.callout-note icon="false" title="Ejercicio 1"}
 1.  Revisa la ayuda del programa ejecutando `fastp -h`, y asegúrate de
     entender al menos las opciones que hemos usado.
 
+::: {.callout-important icon="false" title="Respuesta"}
 ```{bash}
 fastp -h
 ```
 
-**Observando el comando de ayuda de fastp podemos ver que cuenta con una
+Observando el comando de ayuda de fastp podemos ver que cuenta con una
 gran cantidad de parámetros, en concreto los que hemos usado son -i, o,
 I, O y -merge, los primeros hacen referencia a los archivos de entrada
 "inputs" y los archivos de salida (los resultados) "outputs", los
 ultimos son para unir los archivos de resultados sin superposición,
 además le puedes decir en qué archivo se va todo esto con el
--merge_output**
+-merge_output
+:::
+:::
 
+::: {.callout-note icon="false" title="Ejercicio 2"}
 2.  Revisa el informe generado por `fastp` en el archivo `fastp.html` y
     redacta un pequeño resumen de las principales conclusiones que
     sacas.
 
-**El 91% de las lecturas pasaron el filtro de calidad, eso está muy bien, antes del filtro el 70% de las lecturas tenían calidad Q30, y después de filtrar subió a un 83%, se puede ver también que hay poquisimo overlap 0,03% y que se corrigieron el 25% de las secuencias mediante el filtro de superposición**
+::: {.callout-important icon="false" title="Respuesta"}
+El 91% de las lecturas pasaron el filtro de calidad, eso está muy bien, antes del filtro el 70% de las lecturas tenían calidad Q30, y después de filtrar subió a un 83%, se puede ver también que hay poquisimo overlap 0,03% y que se corrigieron el 25% de las secuencias mediante el filtro de superposición
+:::
+:::
 
-2.  Descarga un segundo conjunto de archivos FASTQ de la misma especie y
+::: {.callout-note icon="false" title="Ejercicio 3"}
+3.  Descarga un segundo conjunto de archivos FASTQ de la misma especie y
     repite el análisis de calidad con ellos. Puedes ver algunas opciones
     en [este
     enlace](https://www.ebi.ac.uk/ena/browser/advanced-search?result=read_run&query=study_accession%3D%22PRJDB3261%22&fields=run_accession%2Cexperiment_title%2Cstudy_accession%2Cfastq_bytes%2Cfastq_ftp%2Cscientific_name%2Cfirst_public&excludeAccessionType=run&excludeAccessions=DRR025089).
     Es mejor no descargar archivos demasiado grandes.
-**Voy a usar otro organismo que también es ligero como DRR025090 también de *Bradyrhizobium diazoefficiens USDA 110* **
+
+::: {.callout-important icon="false" title="Respuesta"}
+Voy a usar otro organismo que también es ligero como DRR025090 también de *Bradyrhizobium diazoefficiens USDA 110*
     
 ```{bash}
 # 1. Descargar (si no existen)
@@ -216,6 +228,10 @@ fi
 
 ```
 :::
+:::
+
+## **Hasta aquí dió tiempo a hacer en el aula**
+Los errores siguientes son porque no se ha continuado modificando el documento .qmd
 
 # Mapeo
 
